@@ -1,24 +1,29 @@
-//
-//  ContentView.swift
-//  SchoolApp
-//
-//  Created by 吉村花菜 on 2024/11/22.
-//
-
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("welcome")
+                .font(.system(size: 50))
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .padding(.top, 40)
+                .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
+            Spacer().frame(height: 40)
+            
+            Text("ログイン")
+                            .font(.system(size: 30))
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
+                        
+                        Spacer() // 残りスペースを下に配置
         }
-        .padding()
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
