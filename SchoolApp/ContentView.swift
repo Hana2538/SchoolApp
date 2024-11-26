@@ -9,7 +9,7 @@ struct ContentView: View {
             Text("welcome")
                 .font(.system(size: 50))
                 .fontWeight(.bold)
-                .padding(.top, 100)
+                .padding(.top, 150)
                 .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
             
             Spacer().frame(height: 20)
@@ -19,31 +19,43 @@ struct ContentView: View {
                 .fontWeight(.bold)
                 .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
             
-            Spacer().frame(height: 30)
+            Spacer().frame(height: 20)
             
             TextField("ユーザー名", text: $username)
                 .padding()
-                .background(Color(.systemGray6))
+                .background(Color(.white))
                 .cornerRadius(8)
+                .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.black, lineWidth: 2)
+                    )
                 .padding(.horizontal, 20)
+            
+            Spacer().frame(height: 25)
             
             SecureField("パスワード", text: $password)
                 .padding()
-                .background(Color(.systemGray6))
+                .background(Color(.white))
                 .cornerRadius(8)
+                .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.black, lineWidth: 2)
+                    )
                 .padding(.horizontal, 20)
             
-            Spacer().frame(height: 20)
+            Spacer().frame(height: 50)
             
             Button(action: {
                 print("ユーザー名: \(username), パスワード: \(password)")
+                
             }) {
                 Text("ログイン")
                     .fontWeight(.bold)
+                    .font(.system(size: 25))
                     .foregroundColor(.white)
                     .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
+                    .frame(width: 200, height: 60)
+                    .background(Color(red: 0, green: 0.4, blue: 0.7))
                     .cornerRadius(8)
             }
             .padding(.horizontal, 20)
