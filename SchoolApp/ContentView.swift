@@ -1,16 +1,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var username: String = "" //
-    @State private var password: String = "" //
+    @State private var username: String = ""
+    @State private var password: String = ""
     
     var body: some View {
         ZStack {
-            // 背景画像
-            Image("background")
+            Image("kabegamiNone")
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
+            
             VStack {
                 Text("welcome")
                     .font(.system(size: 50))
@@ -36,6 +36,7 @@ struct ContentView: View {
                             .stroke(Color.black, lineWidth: 2)
                     )
                     .padding(.horizontal, 20)
+                    .frame(width: 400, height: 50)
                 
                 Spacer().frame(height: 25)
                 
@@ -48,8 +49,9 @@ struct ContentView: View {
                             .stroke(Color.black, lineWidth: 2)
                     )
                     .padding(.horizontal, 20)
+                    .frame(width: 400, height: 50)
                 
-                Spacer().frame(height: 50)
+                Spacer().frame(height: 10)
                 
                 Button(action: {
                     print("ユーザー名: \(username), パスワード: \(password)")
@@ -67,13 +69,15 @@ struct ContentView: View {
                 .padding(.horizontal, 20)
                 
                 Spacer()
+                
+//                NavigationLink(destination: MakeAccountView()) {
+//                    Text("make account")
+//                }
             }
         }
     }
-    
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
-        }
-    }
+}
+
+#Preview {
+    ContentView()
 }

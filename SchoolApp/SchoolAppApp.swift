@@ -11,7 +11,20 @@ import SwiftUI
 struct SchoolAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                TabView {
+                    ContentView()
+                        .tabItem {
+                            Text("Home")
+                            Image(systemName: "house.fill")
+                                .font(.system(size: 100, weight: .bold))
+                        }
+                    AccountView()
+                        .tabItem{
+                            Text("Account")
+                        }
+                }
+            }
         }
     }
 }
