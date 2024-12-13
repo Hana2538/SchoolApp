@@ -15,15 +15,14 @@ struct AccountView: View {
                     .font(.system(size: 40))
                     .fontWeight(.bold)
                     .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
-                
-                    
+                    .padding(.bottom, 80)
                 
                 Image(imageName)
                     .resizable()
                     .clipShape(Circle())
-                    .frame(width: 200,height: 200)
+                    .frame(width: 200, height: 200)
+                    .padding(.bottom, 50)
                 
-
                 TextField("アカウント名を編集", text: $accountname)
                     .padding()
                     .background(Color(.white))
@@ -36,9 +35,9 @@ struct AccountView: View {
                     .frame(width: 400, height: 50)
                 
                 Spacer()
-                
             }
-            .padding(.top,30)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            .padding()
         }
     }
 }
