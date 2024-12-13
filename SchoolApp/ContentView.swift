@@ -70,9 +70,6 @@ struct ContentView: View {
                 
                 Spacer()
                 
-//                NavigationLink(destination: MakeAccountView()) {
-//                    Text("make account")
-//                }
             }
         }
     }

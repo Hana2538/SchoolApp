@@ -22,6 +22,8 @@ struct SchoolAppApp: App {
                     AccountView()
                         .tabItem{
                             Text("Account")
+                            Image(systemName:"person.circle")
+                            
                         }
                 }
             }

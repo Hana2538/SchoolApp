@@ -1,15 +1,23 @@
-//
-//  AccountView.swift
-//  SchoolApp
-//
-//  Created by 吉村花菜 on 2024/11/29.
-//
-
 import SwiftUI
 
 struct AccountView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Image("kabegamiNone")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+            
+            VStack {
+                Text("アカウント編集")
+                    .font(.system(size: 40))
+                    .fontWeight(.bold)
+                    .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
+                
+                Spacer()
+            }
+            .padding(.top)
+        }
     }
 }
 
