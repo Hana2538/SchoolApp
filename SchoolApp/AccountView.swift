@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct AccountView: View {
+struct HomeytView: View {
     @State var imageName: String = "kabegamiNone"
     @State private var accountname: String = ""
     
@@ -59,5 +59,5 @@ struct AccountView: View {
 }
 
 #Preview {
-    AccountView()
+    HomeytView()
 }
