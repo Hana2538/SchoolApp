@@ -13,13 +13,13 @@ struct SchoolAppApp: App {
         WindowGroup {
             NavigationView {
                 TabView {
-                    ContentView()
+                    HomeView()
                         .tabItem {
                             Text("Home")
                             Image(systemName: "house.fill")
                                 .font(.system(size: 100, weight: .bold))
                         }
-                    AccountView()
+                   AccountView()
                         .tabItem{
                             Text("Account")
                             Image(systemName:"person.circle")
