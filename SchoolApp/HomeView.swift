@@ -68,10 +68,28 @@ struct HomeView: View {
                 }
                 .padding(.horizontal, 20)
                 
+                // アカウントをお持ちでない方はこちらボタン
+                NavigationLink(destination: SignUpView()) {
+                    Text("アカウントをお持ちでない方はこちら")
+                        .fontWeight(.bold)
+                        .font(.system(size: 18))
+                        .foregroundColor(Color.blue)
+                        .padding()
+                }
+                .padding(.top, 20)
+                
                 Spacer()
                 
             }
         }
+    }
+}
+
+struct SignUpView: View {
+    var body: some View {
+        Text("新規登録画面")
+            .font(.largeTitle)
+            .navigationTitle("Sign Up")
     }
 }
 
