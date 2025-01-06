@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct HomeView: View {
+struct LogInAccountView: View {
     @State private var username: String = ""
     @State private var password: String = ""
     
@@ -87,12 +87,35 @@ struct HomeView: View {
 
 struct SignUpView: View {
     var body: some View {
-        Text("新規登録画面")
-            .font(.largeTitle)
-            .navigationTitle("Sign Up")
+        ZStack {
+            Image("kabegamiNone")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+        
+            
+            RoundedRectangle(cornerRadius: 25)
+                .fill(Color.orange)
+                .frame(width: 350, height: 500)
+                .opacity(0.5)
+                .padding(.top, -200)
+            
+            VStack {
+                
+                Text("アカウント作成")
+                    .font(.system(size: 40))
+                    .fontWeight(.bold)
+                    .padding(.top,50)
+                    .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
+                
+                Spacer()
+            }
+        }
     }
 }
 
+
+
 #Preview {
-    HomeView()
+    LogInAccountView()
 }
