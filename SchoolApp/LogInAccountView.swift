@@ -147,11 +147,30 @@ struct SignUpView: View {
                     .frame(width: 350, height: 50)
                     .padding(.bottom, 30)
                 
+                Spacer().frame(height: 10)
+                
+                Button(action: {
+                    // ボタンのアクションをここに書くらしいよん
+                    print("アカウント作成ボタンが押されました。")
+                }) {
+                    Text("作成")
+                        .fontWeight(.bold)
+                        .font(.system(size: 25))
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(width: 200, height: 60)
+                        .background(Color(red: 0, green: 0.4, blue: 0.7))
+                        .cornerRadius(8)
+                }
+                
                 Spacer()
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            .padding()
             }
         }
     }
-}
+
 
 
 
