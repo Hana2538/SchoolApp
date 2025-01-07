@@ -10,9 +10,33 @@
 		33FD33BB2CF0861600B35870 /* SchoolApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		33F027CD2D2D1A8E003D0858 /* Exceptions for "SchoolApp" folder in "SchoolApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				HomeView.swift,
+			);
+			target = 33FD33BA2CF0861600B35870 /* SchoolApp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		33F027CE2D2D1A8E003D0858 /* Exceptions for "SchoolApp" folder in "Copy Bundle Resources" phase from "SchoolApp" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 33FD33B92CF0861600B35870 /* Resources */;
+			membershipExceptions = (
+				HomeView.swift,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		33FD33BD2CF0861600B35870 /* SchoolApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				33F027CD2D2D1A8E003D0858 /* Exceptions for "SchoolApp" folder in "SchoolApp" target */,
+				33F027CE2D2D1A8E003D0858 /* Exceptions for "SchoolApp" folder in "Copy Bundle Resources" phase from "SchoolApp" target */,
+			);
 			path = SchoolApp;
 			sourceTree = "<group>";
 		};
