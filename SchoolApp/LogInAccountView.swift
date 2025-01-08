@@ -125,6 +125,8 @@ struct SignUpView: View {
                     .padding(.horizontal)
                     .frame(width: 350, height: 50)
                     .padding(.bottom, 30)
+                
+                //あれれ色変わってる
 
                 TextField("メールアドレス", text: $Mailname)
                     .padding()
