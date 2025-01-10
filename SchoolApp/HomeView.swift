@@ -1,17 +1,30 @@
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
+    @State private var GamePin: String = ""
     var body: some View {
-        Text("Hello, World!")
-            .font(.largeTitle)
-            .foregroundColor(.orange)
-            .padding()
+        ZStack{
+            Image("kabegamiNone")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+            
+            VStack {
+                TextField("ゲームPIN", text: $GamePin)
+                    .padding()
+                    .background(Color(.white))
+                    .cornerRadius(8)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.black, lineWidth: 2)
+                    )
+                    .padding(.horizontal, 20)
+                    .frame(width: 400, height: 50)
+            }
+        }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    HomeView()
 }
-

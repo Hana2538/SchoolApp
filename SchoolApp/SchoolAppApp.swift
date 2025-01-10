@@ -15,7 +15,7 @@ struct SchoolAppApp: App {
                 TabView {
                    LogInAccountView()
                         .tabItem {
-                            Text("Home")
+                            Text("Login")
                             Image(systemName: "house.fill")
                                 .font(.system(size: 100, weight: .bold))
                         }
@@ -24,6 +24,10 @@ struct SchoolAppApp: App {
                             Text("Account")
                             Image(systemName:"person.circle")
                             
+                        }
+                    HomeView()
+                        .tabItem {
+                            Text("home")
                         }
                 }
             }

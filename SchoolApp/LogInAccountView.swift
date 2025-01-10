@@ -1,11 +1,5 @@
 import SwiftUI
 
-struct ContentView: View {
-    var body: some View {
-        LogInAccountView()
-    }
-}
-
 struct LogInAccountView: View {
     @State private var username: String = ""
     @State private var password: String = ""
@@ -60,7 +54,9 @@ struct LogInAccountView: View {
 
                     Spacer().frame(height: 10)
 
-                    NavigationLink(destination: HomeView()) {
+                    Button(action: {
+                        print("ログインボタンが押されました。")
+                    }) {
                         Text("ログイン")
                             .fontWeight(.bold)
                             .font(.system(size: 25))
@@ -70,6 +66,7 @@ struct LogInAccountView: View {
                             .background(Color(red: 0, green: 0.4, blue: 0.7))
                             .cornerRadius(8)
                     }
+
                     .padding(.horizontal, 20)
 
                     NavigationLink(destination: SignUpView()) {
@@ -126,7 +123,6 @@ struct SignUpView: View {
                     .frame(width: 350, height: 50)
                     .padding(.bottom, 30)
                 
-                //あれれ色変わってる
 
                 TextField("メールアドレス", text: $Mailname)
                     .padding()
@@ -175,16 +171,8 @@ struct SignUpView: View {
     }
 }
 
-struct HomeView: View {
-    var body: some View {
-        VStack {
-            Text("ホーム画面")
-                .font(.largeTitle)
-                .padding()
-        }
-    }
-}
+
 
 #Preview {
-    ContentView()
+    LogInAccountView()
 }
