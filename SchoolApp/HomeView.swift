@@ -20,7 +20,7 @@ struct HomeView: View {
                     )
                     .padding(.horizontal, 20)
                     .frame(width: 400, height: 50)
-                    .padding(.top,-200)
+                    .padding(.top, -200)
                 
                 Button(action: {
                     print("入力ボタンが押されました。")
@@ -34,7 +34,37 @@ struct HomeView: View {
                         .background(Color(red: 0, green: 0.4, blue: 0.7))
                         .cornerRadius(8)
                 }
+                .padding(.top, -100)
+                
+                Button(action: {
+                    print("問題を新規作成ボタンが押されました。")
+                }) {
+                    Text("問題を新規作成")
+                        .fontWeight(.bold)
+                        .font(.system(size: 25))
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(width: 200, height: 60)
+                        .background(Color(.orange))
+                        .cornerRadius(8)
+                }
+                .padding(.top)
+                
+                Button(action: {
+                    print("マイルームボタンが押されました。")
+                }) {
+                    Text("マイルーム")
+                        .fontWeight(.bold)
+                        .font(.system(size: 25))
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(width: 200, height: 60)
+                        .background(Color(.orange))
+                        .cornerRadius(8)
+                }
+                .padding(.top)
             }
+            .padding(.top, 200) // top,horizontalとかの意味がわかんない。どうしてここに書くんだろう？？
         }
     }
 }
