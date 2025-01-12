@@ -15,7 +15,7 @@ struct HomeView: View {
                 Text("Home")
                     .font(.system(size: 50))
                     .fontWeight(.bold)
-                    .padding(.top, 150)
+                    .padding(.top, 100)
                     .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
                 
                 VStack{
@@ -69,10 +69,12 @@ struct HomeView: View {
                             .background(Color.orange)
                             .cornerRadius(8)
                     }
+                   
                 }
                 
                 Spacer()
             }
+            
         }
     }
 }
