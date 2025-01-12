@@ -10,17 +10,13 @@ struct HomeView: View {
                 .scaledToFill()
                 .ignoresSafeArea()
             
-            VStack(spacing: 0) {
-                Rectangle()
-                    .fill(Color.orange)
-                    .frame(height: 100)
+            VStack {
+                Spacer() // 上部のスペース
                 
-                Spacer()
-                
-                VStack {
+                VStack(spacing: 20) {
                     TextField("ゲームPIN", text: $GamePin)
                         .padding()
-                        .background(Color(.white))
+                        .background(Color.white)
                         .cornerRadius(8)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
@@ -28,7 +24,6 @@ struct HomeView: View {
                         )
                         .padding(.horizontal, 20)
                         .frame(width: 400, height: 50)
-                        .padding(.top, -200)
                     
                     Button(action: {
                         print("入力ボタンが押されました。")
@@ -42,7 +37,6 @@ struct HomeView: View {
                             .background(Color(red: 0, green: 0.4, blue: 0.7))
                             .cornerRadius(8)
                     }
-                    .padding(.top, -100)
                     
                     Button(action: {
                         print("問題を新規作成ボタンが押されました。")
@@ -53,10 +47,9 @@ struct HomeView: View {
                             .foregroundColor(.white)
                             .padding()
                             .frame(width: 200, height: 60)
-                            .background(Color(.orange))
+                            .background(Color.orange)
                             .cornerRadius(8)
                     }
-                    .padding(.top)
                     
                     Button(action: {
                         print("マイルームボタンが押されました。")
@@ -67,18 +60,12 @@ struct HomeView: View {
                             .foregroundColor(.white)
                             .padding()
                             .frame(width: 200, height: 60)
-                            .background(Color(.orange))
+                            .background(Color.orange)
                             .cornerRadius(8)
                     }
-                    .padding(.top)
                 }
                 
-                Spacer()
-                
-                
-                Rectangle()
-                    .fill(Color(red: 0, green: 0.4, blue: 0.7))
-                    .frame(height: 100)
+                Spacer() // 下部のスペース
             }
         }
     }
@@ -87,3 +74,4 @@ struct HomeView: View {
 #Preview {
     HomeView()
 }
+
