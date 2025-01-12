@@ -11,10 +11,13 @@ struct SchoolAppApp: App {
         appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white]
         appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.white]
         
+        
+        appearance.stackedLayoutAppearance.normal.iconColor = .white
         // iOS 15以降の場合、scrollEdgeAppearanceも設定
         if #available(iOS 15.0, *) {
             UITabBar.appearance().scrollEdgeAppearance = appearance
         }
+
     }
     
     var body: some Scene {
@@ -38,7 +41,7 @@ struct SchoolAppApp: App {
                         .tabItem {
                             Text("Home")
                         }
-                }.accentColor(.white)
+                }.accentColor(.orange)
             }
         }
     }
