@@ -11,9 +11,14 @@ struct HomeView: View {
                 .ignoresSafeArea()
             
             VStack {
-                Spacer()
                 
-                VStack(spacing: 20) {
+                Text("Home")
+                    .font(.system(size: 50))
+                    .fontWeight(.bold)
+                    .padding(.top, 150)
+                    .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
+                
+                VStack{
                     TextField("ゲームPIN", text: $GamePin)
                         .padding()
                         .background(Color.white)
@@ -24,6 +29,7 @@ struct HomeView: View {
                         )
                         .padding(.horizontal, 20)
                         .frame(width: 400, height: 50)
+                        .padding(.bottom, 10)
                     
                     Button(action: {
                         print("入力ボタンが押されました。")
@@ -37,6 +43,7 @@ struct HomeView: View {
                             .background(Color(red: 0, green: 0.4, blue: 0.7))
                             .cornerRadius(8)
                     }
+                    .padding(.bottom, 50)
                     
                     Button(action: {
                         print("問題を新規作成ボタンが押されました。")
@@ -50,6 +57,7 @@ struct HomeView: View {
                             .background(Color.orange)
                             .cornerRadius(8)
                     }
+                    .padding(.bottom, 20)
                     
                     Button(action: {
                         print("マイルームボタンが押されました。")
@@ -65,7 +73,7 @@ struct HomeView: View {
                     }
                 }
                 
-                Spacer() 
+                Spacer()
             }
         }
     }
@@ -74,4 +82,3 @@ struct HomeView: View {
 #Preview {
     HomeView()
 }
-
