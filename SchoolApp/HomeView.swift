@@ -45,18 +45,16 @@ struct HomeView: View {
                     }
                     .padding(.bottom, 50)
                     
-                    Button(action: {
-                        print("問題を新規作成ボタンが押されました。")
-                    }) {
-                        Text("問題を新規作成")
-                            .fontWeight(.bold)
-                            .font(.system(size: 25))
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(width: 200, height: 60)
-                            .background(Color.orange)
-                            .cornerRadius(8)
-                    }
+                    NavigationLink(destination: MakeQuestion()) { 
+                                            Text("問題を新規作成")
+                                                .fontWeight(.bold)
+                                                .font(.system(size: 25))
+                                                .foregroundColor(.white)
+                                                .padding()
+                                                .frame(width: 200, height: 60)
+                                                .background(Color.orange)
+                                                .cornerRadius(8)
+                                        }
                     .padding(.bottom, 20)
                     
                     Button(action: {
