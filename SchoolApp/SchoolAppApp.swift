@@ -1,35 +1,44 @@
-//
-//  SchoolAppApp.swift
-//  SchoolApp
-//
-//  Created by 吉村花菜 on 2024/11/22.
-//
-
 import SwiftUI
 
 @main
 struct SchoolAppApp: App {
+    init() {
+        
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(red: 0, green: 0.4, blue: 0.7, alpha: 1)
+        
+        appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        // iOS 15以降の場合、scrollEdgeAppearanceも設定
+        if #available(iOS 15.0, *) {
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+        }
+    }
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
                 TabView {
-                   LogInAccountView()
+                    LogInAccountView()
                         .tabItem {
                             Text("Login")
                             Image(systemName: "house.fill")
                                 .font(.system(size: 100, weight: .bold))
                         }
-                   AccountView()
-                        .tabItem{
+                    
+                    AccountView()
+                        .tabItem {
                             Text("Account")
-                            Image(systemName:"person.circle")
-                            
+                            Image(systemName: "person.circle")
                         }
+                    
                     HomeView()
                         .tabItem {
-                            Text("home")
+                            Text("Home")
                         }
-                }
+                }.accentColor(.white)
             }
         }
     }

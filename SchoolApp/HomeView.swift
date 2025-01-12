@@ -11,7 +11,7 @@ struct HomeView: View {
                 .ignoresSafeArea()
             
             VStack {
-                Spacer() // 上部のスペース
+                Spacer()
                 
                 VStack(spacing: 20) {
                     TextField("ゲームPIN", text: $GamePin)
@@ -65,7 +65,7 @@ struct HomeView: View {
                     }
                 }
                 
-                Spacer() // 下部のスペース
+                Spacer() 
             }
         }
     }
