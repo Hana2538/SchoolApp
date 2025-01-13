@@ -21,7 +21,7 @@ struct MakeQuestion: View {
                     .fill(Color(red: 0, green: 0.4, blue: 0.7))
                     .frame(width: 350, height: 250)
                     .opacity(0.5)
-                padding(.bottom,100)
+                    .padding(.bottom,100)
             }
             
         }
