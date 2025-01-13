@@ -39,7 +39,7 @@ struct HomeView: View {
                     }
                     .padding(.bottom, 50)
                     
-                    NavigationLink(destination: MakeQuestion()) { 
+                    NavigationLink(destination:MakeRoomName()) { 
                         Text("問題を新規作成")
                             .modifier(MyTitle(color: .orange))
                                         }
