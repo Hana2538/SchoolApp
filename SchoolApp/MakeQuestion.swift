@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct MakeQuestion: View {
+    @State private var roomname: String = ""
     var body: some View {
         ZStack {
             Image("kabegamiNone")
@@ -15,23 +16,47 @@ struct MakeQuestion: View {
                     .padding(.top, 100)
                     .foregroundColor(Color.orange)
                 
-                Spacer()
+                    
                 
                 ZStack {
                     RoundedRectangle(cornerRadius: 25)
                         .fill(Color(red: 0, green: 0.4, blue: 0.7))
-                        .frame(width: 350, height: 250)
-                        .opacity(0.7)
+                        .frame(width: 350, height: 280)
+                        .opacity(0.8)
                     
                     Text("ルームを作成")
                         .font(.system(size: 30))
                         .fontWeight(.bold)
                         .foregroundColor(.white)
+                        .padding(.bottom, 200)
+                    
+                    Text("ルーム名")
+                        .font(.system(size: 20))
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .padding(.bottom, 120)
+                        .padding(.leading, -150) // マイナスにしないと左に寄せれなかったから、これ.padding(.trailing, 10)が逆かも
+                        
+                    TextField("", text: $roomname)
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(8)
+                        .padding(.horizontal)
+                        .frame(width: 350, height: 50)
+                        .padding(.bottom, 30)
+                    
+                    Button(action: {
+                        print("作成ボタンが押されました")
+                    }) {
+                        Text("作成")
+                            .modifier(MyTitle(color: .orange))
+                    }.padding(.top,130)
                 }
-                .padding(.top, 100) 
+                .padding(.bottom, 150)
                 
                 Spacer()
             }
+           
         }
     }
 }
