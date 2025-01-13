@@ -5,15 +5,16 @@ struct MyTitle: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-                    .fontWeight(.bold)
-                    .font(.system(size: 25))
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(width: 200, height: 60)
-                    .background(color)
-                    .cornerRadius(8)
+            .fontWeight(.bold)
+            .font(.system(size: 25))
+            .foregroundColor(.white)
+            .padding(.horizontal, 20) // 横！
+            .padding(.vertical, 13)   // たて！
+            .background(color)
+            .cornerRadius(8)
     }
 }
+
 
 struct LogInAccountView: View {
     @State private var username: String = ""

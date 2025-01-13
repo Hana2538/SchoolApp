@@ -65,18 +65,6 @@ struct SignUpView: View {
 
                 Spacer().frame(height: 10)
 
-//                Button(action: {
-//                    print("作成ボタンが押されました。")
-//                }) {
-//                    Text("作成")
-//                        .fontWeight(.bold)
-//                        .font(.system(size: 25))
-//                        .foregroundColor(.white)
-//                        .padding()
-//                        .frame(width: 200, height: 60)
-//                        .background(Color(red: 0, green: 0.4, blue: 0.7))
-//                        .cornerRadius(8)
-//                }
                 
                 NavigationLink(destination:MakeRoomName()) {
                     Text("問題を新規作成")

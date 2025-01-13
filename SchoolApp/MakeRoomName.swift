@@ -46,7 +46,7 @@ struct MakeRoomName: View {
                         .padding(.bottom, 30)
                     
                     
-                    NavigationLink(destination:MakeQuestion()) {
+                    NavigationLink(destination:MakeQuestionBase()) {
                         Text("作成")
                             .modifier(MyTitle(color: .orange))
                     }
