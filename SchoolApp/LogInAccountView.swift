@@ -10,7 +10,7 @@ struct MyTitle: ViewModifier {
                     .foregroundColor(.white)
                     .padding()
                     .frame(width: 200, height: 60)
-                    .background(Color(red: 0, green: 0.4, blue: 0.7))
+                    .background(color)
                     .cornerRadius(8)
     }
 }
@@ -71,7 +71,7 @@ struct LogInAccountView: View {
                         print("ログインボタンが押されました")
                     }) {
                         Text("ログイン")
-                            .modifier(MyTitle(color: .blue))
+                            .modifier(MyTitle(color:Color(red: 0, green: 0.4, blue: 0.7)))
                     }
 
                     NavigationLink(destination: SignUpView()) {

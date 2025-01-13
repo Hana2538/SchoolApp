@@ -32,28 +32,16 @@ struct HomeView: View {
                         .padding(.bottom, 10)
                     
                     Button(action: {
-                        print("入力ボタンが押されました。")
+                        print("入力ボタンが押されました")
                     }) {
                         Text("入力")
-                            .fontWeight(.bold)
-                            .font(.system(size: 25))
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(width: 200, height: 60)
-                            .background(Color(red: 0, green: 0.4, blue: 0.7))
-                            .cornerRadius(8)
+                            .modifier(MyTitle(color:Color(red: 0, green: 0.4, blue: 0.7)))
                     }
                     .padding(.bottom, 50)
                     
                     NavigationLink(destination: MakeQuestion()) { 
-                                            Text("問題を新規作成")
-                                                .fontWeight(.bold)
-                                                .font(.system(size: 25))
-                                                .foregroundColor(.white)
-                                                .padding()
-                                                .frame(width: 200, height: 60)
-                                                .background(Color.orange)
-                                                .cornerRadius(8)
+                        Text("問題を新規作成")
+                            .modifier(MyTitle(color: .orange))
                                         }
                     .padding(.bottom, 20)
                     
@@ -61,13 +49,7 @@ struct HomeView: View {
                         print("マイルームボタンが押されました。")
                     }) {
                         Text("マイルーム")
-                            .fontWeight(.bold)
-                            .font(.system(size: 25))
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(width: 200, height: 60)
-                            .background(Color.orange)
-                            .cornerRadius(8)
+                            .modifier(MyTitle(color: .orange))
                     }
                    
                 }
