@@ -1,5 +1,20 @@
 import SwiftUI
 
+struct MyTitle: ViewModifier {
+    let color: Color
+    
+    func body(content: Content) -> some View {
+        content
+                    .fontWeight(.bold)
+                    .font(.system(size: 25))
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(width: 200, height: 60)
+                    .background(Color(red: 0, green: 0.4, blue: 0.7))
+                    .cornerRadius(8)
+    }
+}
+
 struct LogInAccountView: View {
     @State private var username: String = ""
     @State private var password: String = ""
@@ -16,17 +31,15 @@ struct LogInAccountView: View {
                     Text("welcome")
                         .font(.system(size: 50))
                         .fontWeight(.bold)
-                        .padding(.top, 150)
+                        .padding()
                         .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
-
-                    Spacer().frame(height: 20)
+                        .padding(.top, 100)
 
                     Text("ログイン")
                         .font(.system(size: 30))
                         .fontWeight(.bold)
                         .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
-
-                    Spacer().frame(height: 20)
+                        .padding(.bottom, 50)
 
                     TextField("ユーザー名", text: $username)
                         .padding()
@@ -55,19 +68,11 @@ struct LogInAccountView: View {
                     Spacer().frame(height: 10)
 
                     Button(action: {
-                        print("ログインボタンが押されました。")
+                        print("ログインボタンが押されました")
                     }) {
                         Text("ログイン")
-                            .fontWeight(.bold)
-                            .font(.system(size: 25))
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(width: 200, height: 60)
-                            .background(Color(red: 0, green: 0.4, blue: 0.7))
-                            .cornerRadius(8)
+                            .modifier(MyTitle(color: .blue))
                     }
-
-                    .padding(.horizontal, 20)
 
                     NavigationLink(destination: SignUpView()) {
                         Text("アカウントをお持ちでない方はこちら")
@@ -76,18 +81,12 @@ struct LogInAccountView: View {
                             .foregroundColor(Color.blue)
                             .padding()
                     }
-                    .padding(.top, 20)
+                    .padding(.top, 10)
 
                     Spacer()
                 }
+                .padding(.horizontal, 20)
             }
         }
     }
-}
-
-
-
-
-#Preview {
-    LogInAccountView()
 }
