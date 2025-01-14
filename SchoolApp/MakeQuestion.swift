@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct MakeQuestion: View {
-    @Environment(\.dismiss) var dismiss
+    @Binding var isPresented: Bool
 
     var body: some View {
         VStack {
             Button("閉じる") {
-                dismiss() // dismiss()を正しく呼び出す
+                isPresented = false
                 print("閉じるボタンが押された")
             }
             .font(.title)
