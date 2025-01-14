@@ -46,9 +46,9 @@ struct HomeView: View {
                     .padding(.bottom, 20)
                     
                     Button(action: {
-                        print("マイルームボタンが押されました。")
+                        print("My Roomボタンが押されました。")
                     }) {
-                        Text("マイルーム")
+                        Text("My Room")
                             .modifier(MyTitle(color: .orange))
                     }
                    

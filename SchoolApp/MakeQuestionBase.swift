@@ -37,7 +37,7 @@ struct MakeQuestionBase: View {
                 VStack {
                     Spacer()
                     
-                    NavigationLink(destination: MakeQuestionBase()) {
+                    NavigationLink(destination: MyRoom()) {
                         Text("ゲームPINを作成")
                             .modifier(MyTitle(color: .orange))
                     }

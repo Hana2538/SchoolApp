@@ -2,13 +2,12 @@ import SwiftUI
 
 struct MakeQuestion: View {
     var body: some View {
+//        @Environment(\.dismiss) var dismiss
         VStack {
-            Text("モーダルシートが表示されています")
-                .font(.largeTitle)
-                .fontWeight(.bold)
             
             Button("閉じる") {
-                // モーダルを閉じるアクション
+//               dismiss()
+                print("閉じるボタンが押された")
             }
             .font(.title)
             .foregroundColor(.orange)
