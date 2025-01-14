@@ -45,11 +45,9 @@ struct HomeView: View {
                                         }
                     .padding(.bottom, 20)
                     
-                    Button(action: {
-                        print("My Roomボタンが押されました。")
-                    }) {
+                    NavigationLink(destination:MyRoom()){
                         Text("My Room")
-                            .modifier(MyTitle(color: .orange))
+                            .modifier(MyTitle(color:.orange))
                     }
                    
                 }
