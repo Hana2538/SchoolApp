@@ -12,7 +12,7 @@ struct MyRoom: View {
                 Text("My Room")
                     .font(.system(size: 50))
                     .fontWeight(.bold)
-                    .padding(.bottom,700)
+                    .padding(.bottom,650)
                     .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
                 
             }
