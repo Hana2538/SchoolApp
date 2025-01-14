@@ -21,7 +21,7 @@ struct MakeQuestionBase: View {
                 Spacer()
 
                 Button(action: {
-                    self.showingModal.toggle()  
+                    showingModal.toggle()  
                 }) {
                     Image(systemName: "plus")
                         .font(.system(size: 40))
