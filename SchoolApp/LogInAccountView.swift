@@ -15,7 +15,6 @@ struct MyTitle: ViewModifier {
     }
 }
 
-
 struct LogInAccountView: View {
     @State private var username: String = ""
     @State private var password: String = ""
@@ -28,19 +27,17 @@ struct LogInAccountView: View {
                     .scaledToFill()
                     .ignoresSafeArea()
 
-                VStack {
+                VStack(spacing: 20) {
                     Text("welcome")
                         .font(.system(size: 50))
                         .fontWeight(.bold)
-                        .padding()
                         .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
-                        .padding(.top, 100)
+                        .padding(.top, 30)
 
                     Text("ログイン")
                         .font(.system(size: 30))
                         .fontWeight(.bold)
                         .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
-                        .padding(.bottom, 50)
 
                     TextField("ユーザー名", text: $username)
                         .padding()
@@ -50,10 +47,7 @@ struct LogInAccountView: View {
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(Color.black, lineWidth: 2)
                         )
-                        .padding(.horizontal, 20)
-                        .frame(width: 400, height: 50)
-
-                    Spacer().frame(height: 25)
+                        .frame(width: 350, height: 50)
 
                     SecureField("パスワード", text: $password)
                         .padding()
@@ -63,16 +57,13 @@ struct LogInAccountView: View {
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(Color.black, lineWidth: 2)
                         )
-                        .padding(.horizontal, 20)
-                        .frame(width: 400, height: 50)
-
-                    Spacer().frame(height: 10)
+                        .frame(width: 350, height: 50)
 
                     Button(action: {
                         print("ログインボタンが押されました")
                     }) {
                         Text("ログイン")
-                            .modifier(MyTitle(color:Color(red: 0, green: 0.4, blue: 0.7)))
+                            .modifier(MyTitle(color: Color(red: 0, green: 0.4, blue: 0.7)))
                     }
 
                     NavigationLink(destination: SignUpView()) {
@@ -80,13 +71,10 @@ struct LogInAccountView: View {
                             .fontWeight(.bold)
                             .font(.system(size: 18))
                             .foregroundColor(Color.blue)
-                            .padding()
                     }
-                    .padding(.top, 10)
-
-                    Spacer()
                 }
                 .padding(.horizontal, 20)
+                .padding(.bottom, 50)
             }
         }
     }
