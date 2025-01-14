@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct MakeQuestion: View {
+    @Environment(\.dismiss) var dismiss
+
     var body: some View {
-//        @Environment(\.dismiss) var dismiss
         VStack {
-            
             Button("閉じる") {
-//               dismiss()
+                dismiss() // dismiss()を正しく呼び出す
                 print("閉じるボタンが押された")
             }
             .font(.title)

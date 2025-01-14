@@ -55,7 +55,7 @@ struct SignUpView: View {
 
                 
                 NavigationLink(destination:MakeRoomName()) {
-                    Text("問題を新規作成")
+                    Text("アカウントを作成")
                         .modifier(MyTitle(color:Color(red: 0, green: 0.4, blue: 0.7)))
                                     }
 

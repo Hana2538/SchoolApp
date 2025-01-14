@@ -24,7 +24,7 @@ struct MakeRoomName: View {
                         .frame(width: 350, height: 280)
                         .opacity(0.8)
                     
-                    Text("ルームを作成")
+                    Text("ルームナンバーを作成")
                         .font(.system(size: 30))
                         .fontWeight(.bold)
                         .foregroundColor(.white)

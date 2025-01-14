@@ -19,7 +19,7 @@ struct HomeView: View {
                     .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
                 
                 VStack{
-                    TextField("ゲームPIN", text: $GamePin)
+                    TextField("ルームナンバー", text: $GamePin)
                         .padding()
                         .background(Color.white)
                         .cornerRadius(8)
@@ -34,7 +34,7 @@ struct HomeView: View {
                     Button(action: {
                         print("入力ボタンが押されました")
                     }) {
-                        Text("入力")
+                        Text("Go!!")
                             .modifier(MyTitle(color:Color(red: 0, green: 0.4, blue: 0.7)))
                     }
                     .padding(.bottom, 50)
