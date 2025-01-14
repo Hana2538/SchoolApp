@@ -15,7 +15,7 @@ struct SignUpView: View {
             RoundedRectangle(cornerRadius: 25)
                 .fill(Color.orange)
                 .frame(width: 350, height: 500)
-                .opacity(0.5)
+                .opacity(0.8)
 
             VStack {
                 Spacer().frame(height: 150)
@@ -30,10 +30,6 @@ struct SignUpView: View {
                     .padding()
                     .background(Color.white)
                     .cornerRadius(8)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.black, lineWidth: 2)
-                    )
                     .padding(.horizontal)
                     .frame(width: 350, height: 50)
                     .padding(.bottom, 30)
@@ -43,10 +39,6 @@ struct SignUpView: View {
                     .padding()
                     .background(Color.white)
                     .cornerRadius(8)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.black, lineWidth: 2)
-                    )
                     .padding(.horizontal)
                     .frame(width: 350, height: 50)
                     .padding(.bottom, 30)
@@ -55,10 +47,6 @@ struct SignUpView: View {
                     .padding()
                     .background(Color.white)
                     .cornerRadius(8)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.black, lineWidth: 2)
-                    )
                     .padding(.horizontal)
                     .frame(width: 350, height: 50)
                     .padding(.bottom, 30)
@@ -68,7 +56,7 @@ struct SignUpView: View {
                 
                 NavigationLink(destination:MakeRoomName()) {
                     Text("問題を新規作成")
-                        .modifier(MyTitle(color: .orange))
+                        .modifier(MyTitle(color:Color(red: 0, green: 0.4, blue: 0.7)))
                                     }
 
                 Spacer()
