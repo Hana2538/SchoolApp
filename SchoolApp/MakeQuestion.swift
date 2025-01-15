@@ -1,13 +1,38 @@
 import SwiftUI
 
+struct TextFieldStyle: ViewModifier {
+    let color: Color
+
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .background(color)
+            .cornerRadius(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.black, lineWidth: 2)
+            )
+            .frame(width: 350, height: 50)
+            .padding(.bottom,20)
+    }
+}
+
+extension View {
+    func customTextFieldStyle(color: Color = .white) -> some View {
+        self.modifier(TextFieldStyle(color: color))
+    }
+}
+
 struct MakeQuestion: View {
     @Binding var isPresented: Bool
-    @State private var  roomname: String = ""
-    @State private var imputText: String = ""
+    @State private var inputText: String = ""
+    @State private var choice1: String = ""
+    @State private var choice2: String = ""
+    @State private var choice3: String = ""
+    @State private var choice4: String = ""
 
     var body: some View {
         ZStack {
-           
             VStack {
                 Text("問題を作成")
                     .font(.system(size: 30))
@@ -20,30 +45,39 @@ struct MakeQuestion: View {
                     .fontWeight(.bold)
                     .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
                     .multilineTextAlignment(.center)
-                    .padding(.top,5)
-                    .frame(maxWidth: .infinity, alignment: .leading)//右寄せの時は.trailingだよ！
-                
-                TextEditor(text: $imputText)//「問題文を入力」って入れたいなぁ
-                    .padding(10)//どうしてこれを追加したら角の掠れがなくなったんだろう
+                    .padding(.top, 5)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                TextEditor(text: $inputText)
+                    .padding(10)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.black, lineWidth: 1)
                     )
                     .frame(width: 300, height: 150)
-                
+
                 Text("回答")
                     .font(.system(size: 25))
                     .fontWeight(.bold)
                     .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
                     .multilineTextAlignment(.center)
-                    .padding(.top,5)
+                    .padding(.top, 5)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                
+                TextField("選択肢1", text: $choice1)
+                    .customTextFieldStyle(color: .white)
+
+                TextField("選択肢2", text: $choice2)
+                    .customTextFieldStyle(color: .white)
+
+                TextField("選択肢3", text: $choice3)
+                    .customTextFieldStyle(color: .white)
+
+                TextField("選択肢4", text: $choice4)
+                    .customTextFieldStyle(color: .white)
+
                 Spacer()
             }
-            
-            
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.white)
