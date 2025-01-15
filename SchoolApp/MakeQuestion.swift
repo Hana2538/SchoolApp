@@ -3,6 +3,7 @@ import SwiftUI
 struct MakeQuestion: View {
     @Binding var isPresented: Bool
     @State private var  roomname: String = ""
+    @State private var imputText: String = ""
 
     var body: some View {
         ZStack {
@@ -22,17 +23,22 @@ struct MakeQuestion: View {
                     .padding(.top,5)
                     .frame(maxWidth: .infinity, alignment: .leading)//右寄せの時は.trailingだよ！
                 
-                TextField("", text: $roomname)
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(8)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.black, lineWidth: 2)
+                TextEditor(text: $imputText)//「問題文を入力」って入れたいなぁ
+                    .padding(10)//どうしてこれを追加したら角の掠れがなくなったんだろう
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.black, lineWidth: 1)
                     )
-                    .padding(.horizontal)
-                    .frame(width: 350, height: 50)
-                    .padding(.bottom, 30)
+                    .frame(width: 300, height: 150)
+                
+                Text("回答")
+                    .font(.system(size: 25))
+                    .fontWeight(.bold)
+                    .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
+                    .multilineTextAlignment(.center)
+                    .padding(.top,5)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
                 
                 Spacer()
             }
