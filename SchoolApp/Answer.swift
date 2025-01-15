@@ -14,8 +14,7 @@ struct Answer: View {
     
 
     var body: some View {
-        
-        NavigationView {
+            
             
             ZStack {
                 VStack {
@@ -78,7 +77,8 @@ struct Answer: View {
                 NavigationLink(destination: PointView()) {
                     Text("次へ")
                         .modifier(MyTitle(color: .orange))
-                }
+                
+                
             }
         }
     }
