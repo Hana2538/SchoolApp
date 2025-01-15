@@ -23,6 +23,7 @@ extension View {
     }
 }
 
+
 struct MakeQuestion: View {
     @Binding var isPresented: Bool
     @State private var inputText: String = ""
@@ -30,9 +31,9 @@ struct MakeQuestion: View {
     @State private var choice2: String = ""
     @State private var choice3: String = ""
     @State private var choice4: String = ""
-    
+
     var body: some View {
-        NavigationView{
+        NavigationView {
             ZStack {
                 VStack {
                     Text("問題を作成")
@@ -40,7 +41,7 @@ struct MakeQuestion: View {
                         .fontWeight(.bold)
                         .foregroundColor(Color.orange)
                         .multilineTextAlignment(.center)
-                    
+
                     Text("問題")
                         .font(.system(size: 25))
                         .fontWeight(.bold)
@@ -48,7 +49,7 @@ struct MakeQuestion: View {
                         .multilineTextAlignment(.center)
                         .padding(.top, 5)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    
+
                     TextEditor(text: $inputText)
                         .padding(10)
                         .background(
@@ -56,7 +57,7 @@ struct MakeQuestion: View {
                                 .stroke(Color.black, lineWidth: 1)
                         )
                         .frame(width: 300, height: 150)
-                    
+
                     Text("回答")
                         .font(.system(size: 25))
                         .fontWeight(.bold)
@@ -64,24 +65,24 @@ struct MakeQuestion: View {
                         .multilineTextAlignment(.center)
                         .padding(.top, 5)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    
+
                     TextField("選択肢1", text: $choice1)
                         .customTextFieldStyle(color: .white)
-                    
+
                     TextField("選択肢2", text: $choice2)
                         .customTextFieldStyle(color: .white)
-                    
+
                     TextField("選択肢3", text: $choice3)
                         .customTextFieldStyle(color: .white)
-                    
+
                     TextField("選択肢4", text: $choice4)
                         .customTextFieldStyle(color: .white)
-                    
-                    NavigationLink(destination:Answer()) {
+
+                    NavigationLink(destination: Answer(choice1: $choice1, choice2: $choice2, choice3: $choice3, choice4: $choice4)) {
                         Text("次へ")
                             .modifier(MyTitle(color: .orange))
                     }
-                    
+
                     Spacer()
                 }
             }
