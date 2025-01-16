@@ -1,5 +1,7 @@
 import SwiftUI
 
+//ピッカーっていうのがあるよ！ホイールピッカーとかね！
+
 struct PointView: View {
     @State private var Point: String = ""
     var body: some View {
@@ -39,6 +41,9 @@ struct PointView: View {
                         .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
                     
                 }
+                Spacer()
+                //「問題コードを作成」を押したらシートは閉じてMyroomに行くようにしたい
+                
                 Spacer()
                 
                 
