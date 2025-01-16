@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct MyRoom: View {
+    
     var body: some View {
         
         ZStack{

@@ -1,5 +1,9 @@
 import SwiftUI
 
+class RoomData: ObservableObject {
+    @Published var roomName: String = "仮ルーム" // デフォルト値
+}
+
 struct MakeRoomName: View {
     @State private var roomname: String = ""
     var body: some View {
