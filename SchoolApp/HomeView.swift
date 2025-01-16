@@ -36,19 +36,19 @@ struct HomeView: View {
                             print("入力ボタンが押されました")
                         }) {
                             Text("Go!!")
-                                .modifier(MyTitle(color:Color(red: 0, green: 0.4, blue: 0.7)))
+                                .modifier(MyTitle(color: Color(red: 0, green: 0.4, blue: 0.7), width: 200, height: 50))
                         }
                         .padding(.bottom, 50)
                         
                         NavigationLink(destination:MakeRoomName()) { 
                             Text("問題を新規作成")
-                                .modifier(MyTitle(color: .orange))
+                                .modifier(MyTitle(color: .orange, width: 200, height: 50))
                         }
                         .padding(.bottom, 20)
                         
                         NavigationLink(destination:MyRoom()){
                             Text("My Room")
-                                .modifier(MyTitle(color:.orange))
+                                .modifier(MyTitle(color: .orange, width: 200, height: 50))
                         }
                         
                     }

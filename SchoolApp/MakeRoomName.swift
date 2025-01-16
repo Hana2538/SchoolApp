@@ -1,9 +1,5 @@
 import SwiftUI
 
-class RoomData: ObservableObject {
-    @Published var roomName: String = "仮ルーム" // デフォルト値
-}
-
 struct MakeRoomName: View {
     @State private var roomname: String = ""
     var body: some View {
@@ -52,7 +48,7 @@ struct MakeRoomName: View {
                     
                     NavigationLink(destination:MakeQuestionBase()) {
                         Text("作成")
-                            .modifier(MyTitle(color: .orange))
+                            .modifier(MyTitle(color: .orange, width: 200, height: 50))
                     }
                     .padding(.top,130)
                 }

@@ -2,18 +2,20 @@ import SwiftUI
 
 struct MyTitle: ViewModifier {
     let color: Color
+    let width: CGFloat
+    let height: CGFloat
     
     func body(content: Content) -> some View {
         content
             .fontWeight(.bold)
             .font(.system(size: 25))
             .foregroundColor(.white)
-            .padding(.horizontal, 20) // 横！
-            .padding(.vertical, 13)   // たて！
+            .frame(width: width, height: height) // サイズ指定
             .background(color)
             .cornerRadius(8)
     }
 }
+
 
 struct LogInAccountView: View {
     @State private var username: String = ""
@@ -63,7 +65,8 @@ struct LogInAccountView: View {
                         print("ログインボタンが押されました")
                     }) {
                         Text("ログイン")
-                            .modifier(MyTitle(color: Color(red: 0, green: 0.4, blue: 0.7)))
+                            .modifier(MyTitle(color: Color(red: 0, green: 0.4, blue: 0.7), width: 200, height: 50))
+
                     }
 
                     NavigationLink(destination: SignUpView()) {

@@ -39,7 +39,7 @@ struct AccountView: View {
                     print("編集ボタンが押されました")
                 }) {
                     Text("編集")
-                        .modifier(MyTitle(color:Color(red: 0, green: 0.4, blue: 0.7)))
+                        .modifier(MyTitle(color: Color(red: 0, green: 0.4, blue: 0.7), width: 200, height: 50))
                 }
                 .padding(.top, 20)
                 

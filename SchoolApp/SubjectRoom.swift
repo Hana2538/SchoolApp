@@ -16,7 +16,7 @@ struct SubjectRoom: View{
                 
                 NavigationLink(destination:MakeQuestionBase()){
                     Text("問題を編集")
-                        .modifier(MyTitle(color:.orange))
+                        .modifier(MyTitle(color: .orange, width: 200, height: 50))
                 }
                 
                 Spacer()

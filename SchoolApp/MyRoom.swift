@@ -19,7 +19,7 @@ struct MyRoom: View {
                 
                 NavigationLink(destination:SubjectRoom()){
                     Text("仮ルーム")
-                        .modifier(MyTitle(color: .orange))
+                        .modifier(MyTitle(color: .orange, width: 200, height: 50))
                     
                 }
                 Spacer()
