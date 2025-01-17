@@ -38,6 +38,7 @@ struct SubjectRoom: View{
                 }
                 .padding(.bottom,100)
                 
+                
                 Spacer()
             }
         }
