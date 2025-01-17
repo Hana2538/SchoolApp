@@ -32,7 +32,7 @@ struct SubjectRoom: View{
                 
                 .padding(.bottom,30)
                 
-                NavigationLink(destination:MakeQuestionBase()){
+                NavigationLink(destination:Timer()){
                     Text("タイマー")
                         .modifier(MyTitle(color: .orange, width: 250, height: 70))
                 }
