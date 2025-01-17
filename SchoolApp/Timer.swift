@@ -4,6 +4,9 @@ struct Timer: View {
     @State private var Hour = 0
     @State private var Minutes = 0
     @State private var Second = 0
+    @State private var HourScreen: String = "00"
+    @State private var MinuteScreen: String = "00"
+    @State private var SecondScreen: String = "00"
 
     var body: some View {
         ZStack {
@@ -40,7 +43,11 @@ struct Timer: View {
                         )
                         .frame(width: 280, height: 280)
                     
-                    Text("")
+                    Text("\(HourScreen):\(MinuteScreen):\(SecondScreen)")
+                            .font(.system(size: 40))
+                            .fontWeight(.bold)
+                            .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
+                    
                 }
 
                 Spacer()
@@ -108,7 +115,7 @@ struct Timer: View {
 
                     Spacer()
                 }
-                .padding(.bottom, 50) // ボタンの下に余白を追加
+                .padding(.bottom, 50)
 
             }
         }
