@@ -19,6 +19,9 @@ struct RankingView: View {
                         
                         
                         HStack {
+                            
+                            Spacer()
+                            
                             ZStack {
                                 
                                 Image(systemName: "star.fill")
@@ -30,6 +33,46 @@ struct RankingView: View {
                                 Text("1")
                                     .font(.system(size: 35))
                                     .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
+                                
+                            }
+                            Spacer()
+                        }
+                        
+                        HStack {
+                            
+                            Spacer()
+                            
+                            ZStack {
+                                
+                                Image(systemName: "star.fill")
+                                    .resizable()
+                                    .frame(width: 70, height: 70)
+                                    .foregroundColor(Color(red: 0.85, green: 0.85, blue: 0.85))
+                                
+                                
+                                Text("2")
+                                    .font(.system(size: 35))
+                                    .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
+                                
+                            }
+                            Spacer()
+                        }
+                        
+                        HStack {
+                            
+                            Spacer()
+                            
+                            ZStack {
+                                
+                                Image(systemName: "star.fill")
+                                    .resizable()
+                                    .frame(width: 70, height: 70)
+                                    .foregroundColor(Color(red: 0.6, green: 0.4, blue: 0.2))
+                                
+                                
+                                Text("3")
+                                    .font(.system(size: 35))
+                                    .foregroundColor(Color.white)
                                 
                             }
                             Spacer()
