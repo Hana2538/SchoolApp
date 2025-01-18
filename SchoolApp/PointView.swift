@@ -42,7 +42,18 @@ struct PointView: View {
                     
                 }
                 Spacer()
-                //「問題コードを作成」を押したらシートは閉じてMyroomに行くようにしたい
+                
+                Button(action: {
+                    print("問題を作成ボタンが押されました")
+//                    isPresented = false
+                }) {
+                    Text("問題を作成")
+                        .modifier(MyTitle(color: .orange, width: 200, height: 50))
+                }
+                
+                Spacer()
+                    
+                }
                 
                 Spacer()
                 
@@ -50,4 +61,4 @@ struct PointView: View {
             }
         }
     }
-}
+
