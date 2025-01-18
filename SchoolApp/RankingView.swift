@@ -14,11 +14,33 @@ struct RankingView: View {
                     .fontWeight(.bold)
                     .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
                 
-                 Spacer()
-                
+                ScrollView {
+                    VStack {
+                        
+                        
+                        HStack {
+                            ZStack {
+                                
+                                Image(systemName: "star.fill")
+                                    .resizable()
+                                    .frame(width: 70, height: 70)
+                                    .foregroundColor(.yellow)
+                                
+                                
+                                Text("1")
+                                    .font(.system(size: 35))
+                                    .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
+                                
+                            }
+                            Spacer()
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    
+                }
             }
         }
     }
 }
-
-
