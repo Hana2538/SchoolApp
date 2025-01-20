@@ -4,6 +4,7 @@ import SwiftUI
 
 struct PointView: View {
     @State private var Point: String = ""
+//    @Binding var isPresented: Bool
     var body: some View {
         ZStack{
             VStack{

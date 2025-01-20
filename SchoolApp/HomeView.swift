@@ -32,12 +32,11 @@ struct HomeView: View {
                             .frame(width: 400, height: 50)
                             .padding(.bottom, 10)
                         
-                        Button(action: {
-                            print("入力ボタンが押されました")
-                        }) {
+                        NavigationLink(destination:UserRoom()) {
                             Text("Go!!")
                                 .modifier(MyTitle(color: Color(red: 0, green: 0.4, blue: 0.7), width: 200, height: 50))
                         }
+                        
                         .padding(.bottom, 50)
                         
                         NavigationLink(destination:MakeRoomName()) { 
