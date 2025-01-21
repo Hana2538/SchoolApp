@@ -3,6 +3,7 @@ import SwiftUI
 struct UserRoom: View{
     @State private var points: Int = 0
     @State private var questionCode: String = ""
+    @State private var showingModal = false
     var body:some View{
         ZStack{
             Image("kabegamiNone")
@@ -30,8 +31,8 @@ struct UserRoom: View{
                     .padding(.top,30)
                 
                 HStack {
-                    Spacer() 
-
+                    Spacer()
+                    
                     Text("\(points)")
                         .font(.title)
                         .padding()
@@ -42,12 +43,12 @@ struct UserRoom: View{
                                 .stroke(Color.gray, lineWidth: 2)
                         )
                         .frame(width: 100, height: 50)
-
+                    
                     Text("pt")
                         .font(.system(size: 40))
                         .fontWeight(.bold)
                         .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
-
+                    
                     Spacer()
                 }
                 .frame(maxWidth: .infinity)
@@ -64,7 +65,9 @@ struct UserRoom: View{
                     .frame(width: 400, height: 50)
                     .padding(.bottom, 10)
                 
-                NavigationLink(destination:UserRoom()) {
+                Button(action: {
+                    showingModal.toggle()
+                }) {
                     Text("入力")
                         .modifier(MyTitle(color: Color(red: 0, green: 0.4, blue: 0.7), width: 200, height: 50))
                         .padding(.top,30)
@@ -76,9 +79,13 @@ struct UserRoom: View{
                         .padding(.top,40)
                 }
                 
-
+                
                 
                 Spacer()
+                
+                    .sheet(isPresented: $showingModal) {
+                        QuestionView(isPresented: $showingModal)
+                    }
                 
             }
         }
