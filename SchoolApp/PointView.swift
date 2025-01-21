@@ -6,6 +6,7 @@ struct PointView: View {
     @State private var Point: String = ""
     @Binding var isPresented: Bool
     var body: some View {
+        
         ZStack{
             VStack{
                 Text("問題を作成")

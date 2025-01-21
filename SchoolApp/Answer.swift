@@ -13,10 +13,9 @@ struct Answer: View {
     @State private var isPresented = false
     
     
-
+    
     var body: some View {
-            
-            
+        NavigationView{
             ZStack {
                 VStack {
                     Text("問題を作成")
@@ -24,14 +23,14 @@ struct Answer: View {
                         .fontWeight(.bold)
                         .foregroundColor(Color.orange)
                         .multilineTextAlignment(.center)
-
+                    
                     Text("正解の選択肢を選んでください")
                         .font(.system(size: 25))
                         .fontWeight(.bold)
                         .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
                         .multilineTextAlignment(.center)
                         .padding(.top, 5)
-                
+                    
                     
                     VStack(alignment: .leading) {
                         HStack {
@@ -70,34 +69,35 @@ struct Answer: View {
                         }
                         .padding(.bottom, 20)
                     }
-
+                    
                     Spacer()
                 }
                 .padding(20)
                 
                 NavigationLink(destination: PointView(isPresented: $isPresented)) {
-
+                    
                     Text("次へ")
                         .modifier(MyTitle(color: .orange, width: 200, height: 50))
-                
-                
+                    
+                    
+                }
             }
         }
     }
-}
-
-struct CheckBoxToggleStyle: ToggleStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        HStack {
-            configuration.label
-            Spacer()
-            Image(systemName: configuration.isOn ? "checkmark.square" : "square")//ここでONの時とOffの時での状態を書いてる！前者はチェックマーク付きだからON！
-                .resizable()//フレキシブルになってるね
-                .scaledToFit()//こっちは枠に収められるようにしてるらしい
-                .frame(width: 24, height: 24)
-                .onTapGesture {//タップした時って言ってる
-                    configuration.isOn.toggle()//ここでON／OFFごとの状態を切り替えてる！つまりisOnを切り替えてるんだね
-                }
+    
+    struct CheckBoxToggleStyle: ToggleStyle {
+        func makeBody(configuration: Configuration) -> some View {
+            HStack {
+                configuration.label
+                Spacer()
+                Image(systemName: configuration.isOn ? "checkmark.square" : "square")//ここでONの時とOffの時での状態を書いてる！前者はチェックマーク付きだからON！
+                    .resizable()//フレキシブルになってるね
+                    .scaledToFit()//こっちは枠に収められるようにしてるらしい
+                    .frame(width: 24, height: 24)
+                    .onTapGesture {//タップした時って言ってる
+                        configuration.isOn.toggle()//ここでON／OFFごとの状態を切り替えてる！つまりisOnを切り替えてるんだね
+                    }
+            }
         }
     }
 }
