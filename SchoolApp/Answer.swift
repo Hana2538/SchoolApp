@@ -10,6 +10,7 @@ struct Answer: View {
     @State private var isChoice2Selected = false
     @State private var isChoice3Selected = false
     @State private var isChoice4Selected = false
+    @State private var isPresented = false
     
     
 
@@ -60,7 +61,7 @@ struct Answer: View {
                         }
                         .padding(.bottom, 20)
                         
-                        HStack {//HStackは横に配置するためのことらしい！
+                        HStack {
                             Toggle(isOn: $isChoice4Selected) {
                                 Text("選択肢4: \(choice4)")
                                     .font(.system(size: 25))
@@ -74,7 +75,8 @@ struct Answer: View {
                 }
                 .padding(20)
                 
-                NavigationLink(destination: PointView()) {
+                NavigationLink(destination: PointView(isPresented: $isPresented)) {
+
                     Text("次へ")
                         .modifier(MyTitle(color: .orange, width: 200, height: 50))
                 

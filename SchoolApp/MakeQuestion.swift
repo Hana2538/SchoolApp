@@ -78,9 +78,15 @@ struct MakeQuestion: View {
                     TextField("選択肢4", text: $choice4)
                         .customTextFieldStyle(color: .white)
 
-                    NavigationLink(destination: Answer(choice1: $choice1, choice2: $choice2, choice3: $choice3, choice4: $choice4)) {
+                    Button(action: {
+                        isPresented = true
+                    }) {
                         Text("次へ")
                             .modifier(MyTitle(color: .orange, width: 200, height: 50))
+                    }
+
+                    .sheet(isPresented: $isPresented) {
+                        Answer(choice1: $choice1, choice2: $choice2, choice3: $choice3, choice4: $choice4)
                     }
 
                     Spacer()
@@ -93,3 +99,5 @@ struct MakeQuestion: View {
         }
     }
 }
+
+

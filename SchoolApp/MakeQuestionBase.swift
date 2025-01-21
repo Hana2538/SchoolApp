@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MakeQuestionBase: View {
-    @State private var showingModal = false
+    @State private var isPresented = false
 
     var body: some View {
         ZStack {
@@ -21,7 +21,7 @@ struct MakeQuestionBase: View {
                 Spacer()
 
                 Button(action: {
-                    showingModal.toggle()  
+                    isPresented = true
                 }) {
                     Image(systemName: "plus")
                         .font(.system(size: 40))
@@ -32,8 +32,9 @@ struct MakeQuestionBase: View {
                         .shadow(radius: 10)
                 }
                 .padding(.bottom, 30)
-                .sheet(isPresented: $showingModal) {
-                    MakeQuestion(isPresented: $showingModal)
+                
+                .sheet(isPresented: $isPresented) {
+                    MakeQuestion(isPresented: $isPresented) // MakeQuestionにisPresentedを渡す
                 }
             }
         }
