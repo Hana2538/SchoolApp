@@ -11,6 +11,7 @@ struct Answer: View {
     @State private var isChoice3Selected = false
     @State private var isChoice4Selected = false
     @State private var isPresented = false
+    @State private var isHello = false
     
     
     
@@ -74,7 +75,7 @@ struct Answer: View {
                 }
                 .padding(20)
                 
-                NavigationLink(destination: PointView(isPresented: $isPresented)) {
+                NavigationLink(destination: PointView(isPresented:$isHello)) {
                     
                     Text("次へ")
                         .modifier(MyTitle(color: .orange, width: 200, height: 50))
