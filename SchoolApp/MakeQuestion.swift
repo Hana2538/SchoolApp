@@ -26,7 +26,7 @@ extension View {
 
 struct MakeQuestion: View {
     @Binding var isPresented: Bool
-    @State private var inputText: String = ""
+    @State private var inputText: String = "問題文"
     @State private var choice1: String = ""
     @State private var choice2: String = ""
     @State private var choice3: String = ""
