@@ -26,6 +26,7 @@ extension View {
 
 struct MakeQuestion: View {
     @Binding var isPresented: Bool
+    @State private var isHello = false
     @State private var inputText: String = ""
     @State private var choice1: String = ""
     @State private var choice2: String = ""
@@ -33,8 +34,7 @@ struct MakeQuestion: View {
     @State private var choice4: String = ""
 
     var body: some View {
-        NavigationView {
-            ZStack {
+                ZStack {
                 VStack {
                     Text("問題を作成")
                         .font(.system(size: 30))
@@ -79,14 +79,14 @@ struct MakeQuestion: View {
                         .customTextFieldStyle(color: .white)
 
                     Button(action: {
-                        isPresented = true
+                        isHello = true
                     }) {
                         Text("次へ")
                             .modifier(MyTitle(color: .orange, width: 200, height: 50))
                     }
 
-                    .sheet(isPresented: $isPresented) {
-                        Answer(choice1: $choice1, choice2: $choice2, choice3: $choice3, choice4: $choice4)
+                    .sheet(isPresented: $isHello) {
+                        Answer(choice1: $choice1, choice2: $choice2, choice3: $choice3, choice4: $choice4, isHello: $isHello)
                     }
 
                     Spacer()
@@ -98,6 +98,6 @@ struct MakeQuestion: View {
             .padding(40)
         }
     }
-}
+
 
 

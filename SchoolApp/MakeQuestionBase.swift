@@ -34,7 +34,7 @@ struct MakeQuestionBase: View {
                 .padding(.bottom, 30)
                 
                 .sheet(isPresented: $isPresented) {
-                    MakeQuestion(isPresented: $isPresented) // MakeQuestionにisPresentedを渡す
+                    MakeQuestion(isPresented: $isPresented)
                 }
             }
         }

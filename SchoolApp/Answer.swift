@@ -10,8 +10,8 @@ struct Answer: View {
     @State private var isChoice2Selected = false
     @State private var isChoice3Selected = false
     @State private var isChoice4Selected = false
-    @State private var isPresented = false
-    @State private var isHello = false
+    @Binding var isHello: Bool
+    @State private var isOpen = false
     
     
     
@@ -75,13 +75,17 @@ struct Answer: View {
                 }
                 .padding(20)
                 
-                NavigationLink(destination: PointView(isPresented:$isHello)) {
-                    
+                Button(action: {
+                    isOpen = true
+                }) {
                     Text("次へ")
                         .modifier(MyTitle(color: .orange, width: 200, height: 50))
-                    
-                    
                 }
+
+                .sheet(isPresented: $isOpen) {
+                    PointView(isOpen: $isOpen)
+                }
+
             }
         }
     }
