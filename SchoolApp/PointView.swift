@@ -4,7 +4,7 @@ import SwiftUI
 
 struct PointView: View {
     @State private var Point: String = ""
-    @Binding var isOpen: Bool
+    @Binding var isPresented: Bool
     var body: some View {
         
         ZStack{
@@ -47,7 +47,7 @@ struct PointView: View {
                 
                 Button(action: {
                     print("問題を作成ボタンが押されました")
-                    isOpen = false
+                    isPresented = false
                 }) {
                     Text("問題を作成")
                         .modifier(MyTitle(color: .orange, width: 200, height: 50))

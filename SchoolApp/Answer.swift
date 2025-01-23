@@ -10,13 +10,11 @@ struct Answer: View {
     @State private var isChoice2Selected = false
     @State private var isChoice3Selected = false
     @State private var isChoice4Selected = false
-    @Binding var isHello: Bool
-    @State private var isOpen = false
+    @Binding var isPresented: Bool
     
     
     
     var body: some View {
-        NavigationView{
             ZStack {
                 VStack {
                     Text("問題を作成")
@@ -75,15 +73,9 @@ struct Answer: View {
                 }
                 .padding(20)
                 
-                Button(action: {
-                    isOpen = true
-                }) {
+                NavigationLink(destination:PointView(isPresented:$isPresented)){
                     Text("次へ")
                         .modifier(MyTitle(color: .orange, width: 200, height: 50))
-                }
-
-                .sheet(isPresented: $isOpen) {
-                    PointView(isOpen: $isOpen)
                 }
 
             }
@@ -105,4 +97,4 @@ struct Answer: View {
             }
         }
     }
-}
+
