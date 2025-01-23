@@ -14,17 +14,18 @@ struct SignUpView: View {
 
             RoundedRectangle(cornerRadius: 25)
                 .fill(Color.orange)
-                .frame(width: 350, height: 500)
-                .opacity(0.8)
+                .frame(width: 350, height: 400)
+                .opacity(0.6)
+                .padding(.bottom,100)
 
             VStack {
-                Spacer().frame(height: 150)
-
+                Spacer()
+//                    .frame(height: 150)
                 Text("アカウント作成")
                     .font(.system(size: 40))
                     .fontWeight(.bold)
                     .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 15)
 
                 TextField("アカウント名", text: $Accountname)
                     .padding()
@@ -32,7 +33,7 @@ struct SignUpView: View {
                     .cornerRadius(8)
                     .padding(.horizontal)
                     .frame(width: 350, height: 50)
-                    .padding(.bottom, 30)
+                    .padding(.bottom, 20)
                 
 
                 TextField("メールアドレス", text: $Mailname)
@@ -41,7 +42,7 @@ struct SignUpView: View {
                     .cornerRadius(8)
                     .padding(.horizontal)
                     .frame(width: 350, height: 50)
-                    .padding(.bottom, 30)
+                    .padding(.bottom, 20)
 
                 TextField("パスワード", text: $Password)
                     .padding()
@@ -49,9 +50,7 @@ struct SignUpView: View {
                     .cornerRadius(8)
                     .padding(.horizontal)
                     .frame(width: 350, height: 50)
-                    .padding(.bottom, 30)
-
-                Spacer().frame(height: 10)
+                    .padding(.bottom, 20)
 
                 
                 NavigationLink(destination:MakeRoomName()) {
@@ -61,6 +60,8 @@ struct SignUpView: View {
 
                 Spacer()
             }
+            
+            .padding(.bottom,100)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             .padding()
         }

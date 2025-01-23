@@ -2,6 +2,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var GamePin: String = ""
+    @State private var YourName: String = "アカウント名"
     var body: some View {
         NavigationView{
             ZStack {
@@ -12,11 +13,18 @@ struct HomeView: View {
                     .ignoresSafeArea()
                 
                 VStack {
+                    Spacer()
+                    
+                    Text("\(YourName)")
+                        .font(.system(size:20))
+                        .fontWeight(.bold)
+                        .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
+                        .padding(.leading,200)
+                        .padding(.top, 100)
                     
                     Text("Home")
                         .font(.system(size: 50))
                         .fontWeight(.bold)
-                        .padding(.top, 100)
                         .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
                     
                     VStack{
@@ -49,10 +57,10 @@ struct HomeView: View {
                             Text("My Room")
                                 .modifier(MyTitle(color: .orange, width: 200, height: 50))
                         }
+                        Spacer()
                         
                     }
                     
-                    Spacer()
                 }
                 
             }

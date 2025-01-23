@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct AccountView: View {
-    @State var imageName: String = "kabegamiNone"
+    @State var imageName: String = "SubIcon"
     @State private var accountname: String = ""
     
     var body: some View {
