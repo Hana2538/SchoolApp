@@ -2,6 +2,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var GamePin: String = ""
+    @State var imageName: String = "SubIcon"
     @State private var YourName: String = "アカウント名"
     var body: some View {
         NavigationView{
@@ -15,12 +16,18 @@ struct HomeView: View {
                 VStack {
                     Spacer()
                     
+                    Image(imageName)
+                        .resizable()
+                        .clipShape(Circle())
+                        .frame(width: 80, height: 80)
+                        .padding(.bottom, 10)
+                        .padding(.leading,200)
+                    
                     Text("\(YourName)")
                         .font(.system(size:20))
                         .fontWeight(.bold)
                         .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
                         .padding(.leading,200)
-                        .padding(.top, 100)
                     
                     Text("Home")
                         .font(.system(size: 50))
