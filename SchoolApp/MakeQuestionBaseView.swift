@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MakeQuestionBase: View {
+struct MakeQuestionBaseView: View {
     @State private var isPresented = false
 
     var body: some View {
@@ -34,7 +34,7 @@ struct MakeQuestionBase: View {
                 .padding(.bottom, 30)
                 
                 .sheet(isPresented: $isPresented) {
-                    MakeQuestion(isPresented: $isPresented)
+                    MakeQuestionView(isPresented: $isPresented)
                 }
             }
         }

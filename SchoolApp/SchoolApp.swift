@@ -1,7 +1,8 @@
 import SwiftUI
 
 @main
-struct SchoolAppApp: App {
+struct SchoolApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     init() {
         
         let appearance = UITabBarAppearance()
@@ -46,3 +47,17 @@ struct SchoolAppApp: App {
         }
     }
 }
+
+import SwiftUI
+import FirebaseCore
+
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure()
+
+    return true
+  }
+}
+

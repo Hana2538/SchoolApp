@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct TextFieldStyle: ViewModifier {
+struct TextFieldStyleView: ViewModifier {
     let color: Color
     
     func body(content: Content) -> some View {
@@ -19,12 +19,12 @@ struct TextFieldStyle: ViewModifier {
 
 extension View {
     func customTextFieldStyle(color: Color = .white) -> some View {
-        self.modifier(TextFieldStyle(color: color))
+        self.modifier(TextFieldStyleView(color: color))
     }
 }
 
 
-struct MakeQuestion: View {
+struct MakeQuestionView: View {
     @Binding var isPresented: Bool
     @State private var inputText: String = "問題文"
     @State private var choice1: String = ""
@@ -78,7 +78,7 @@ struct MakeQuestion: View {
                     TextField("選択肢4", text: $choice4)
                         .customTextFieldStyle(color: .white)
                     
-                    NavigationLink(destination:Answer(choice1: $choice1, choice2: $choice2, choice3: $choice3, choice4: $choice4, isPresented: $isPresented)){
+                    NavigationLink(destination:AnswerView(choice1: $choice1, choice2: $choice2, choice3: $choice3, choice4: $choice4, isPresented: $isPresented)){
                         Text("次へ")
                             .modifier(MyTitle(color: .orange, width: 200, height: 50))
                     }

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MakeRoomName: View {
+struct MakeRoomNameView: View {
     @State private var roomname: String = ""
     var body: some View {
         ZStack {
@@ -46,7 +46,7 @@ struct MakeRoomName: View {
                         .padding(.bottom, 30)
                     
                     
-                    NavigationLink(destination:MakeQuestionBase()) {
+                    NavigationLink(destination:MakeQuestionBaseView()) {
                         Text("作成")
                             .modifier(MyTitle(color: .orange, width: 200, height: 50))
                     }

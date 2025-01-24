@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MyRoom: View {
+struct MyRoomView: View {
     
     var body: some View {
         
@@ -17,7 +17,7 @@ struct MyRoom: View {
                     .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
                     .multilineTextAlignment(.center)
                 
-                NavigationLink(destination:SubjectRoom()){
+                NavigationLink(destination:SubjectRoomView()){
                     Text("仮ルーム")
                         .modifier(MyTitle(color: .orange, width: 200, height: 50))
                     

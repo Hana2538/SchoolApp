@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct UserRoom: View{
+struct UserRoomView: View{
     @State private var points: Int = 0
     @State private var questionCode: String = ""
     @State private var showingModal = false

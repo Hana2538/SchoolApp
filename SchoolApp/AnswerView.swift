@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct Answer: View {
+struct AnswerView: View {
     @Binding var choice1: String
     @Binding var choice2: String
     @Binding var choice3: String

@@ -53,7 +53,7 @@ struct SignUpView: View {
                     .padding(.bottom, 20)
 
                 
-                NavigationLink(destination:MakeRoomName()) {
+                NavigationLink(destination:MakeRoomNameView()) {
                     Text("アカウントを作成")
                         .modifier(MyTitle(color: Color(red: 0, green: 0.4, blue: 0.7), width: 200, height: 50))
                                     }

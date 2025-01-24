@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SubjectRoom: View{
+struct SubjectRoomView: View{
     var body: some View{
         ZStack{
             Image("kabegamiNone")
@@ -18,7 +18,7 @@ struct SubjectRoom: View{
                     .multilineTextAlignment(.center)
                 
                 
-                NavigationLink(destination:MakeQuestionBase()){
+                NavigationLink(destination:MakeQuestionBaseView()){
                     Text("問題を編集")
                         .modifier(MyTitle(color: .orange, width: 250, height: 70))
                 }
@@ -32,7 +32,7 @@ struct SubjectRoom: View{
                 
                 .padding(.bottom,30)
                 
-                NavigationLink(destination:Timer()){
+                NavigationLink(destination:TimerView()){
                     Text("タイマー")
                         .modifier(MyTitle(color: .orange, width: 250, height: 70))
                 }

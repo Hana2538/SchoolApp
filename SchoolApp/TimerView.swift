@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct Timer: View {
+struct TimerView: View {
     @State private var Hour = 0
     @State private var Minutes = 0
     @State private var Second = 0
