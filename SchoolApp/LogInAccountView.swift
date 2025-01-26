@@ -10,7 +10,7 @@ struct MyTitle: ViewModifier {
             .fontWeight(.bold)
             .font(.system(size: 25))
             .foregroundColor(.white)
-            .frame(width: width, height: height) // サイズ指定
+            .frame(width: width, height: height)
             .background(color)
             .cornerRadius(8)
     }
@@ -18,6 +18,7 @@ struct MyTitle: ViewModifier {
 
 
 struct LogInAccountView: View {
+    @StateObject private var viewModel = LoginViewModel()
     @State private var username: String = ""
     @State private var password: String = ""
 
@@ -63,11 +64,18 @@ struct LogInAccountView: View {
 
                     Button(action: {
                         print("ログインボタンが押されました")
+                        viewModel.login()
                     }) {
                         Text("ログイン")
                             .modifier(MyTitle(color: Color(red: 0, green: 0.4, blue: 0.7), width: 200, height: 50))
 
                     }
+                    if let errorMessage = viewModel.errorMessage {
+                                    Text(errorMessage)
+                                        .font(.system(size:15))
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.red)
+                                }
 
                     NavigationLink(destination: SignUpView()) {
                         Text("アカウントをお持ちでない方はこちら")

@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import FirebaseAuth
 
 struct User {
     var name:String = ""
