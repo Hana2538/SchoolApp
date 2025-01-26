@@ -5,11 +5,11 @@ class LoginViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var errorMessage: String? = nil
 
-    func login() {
-        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+    func login() {//この関数が呼び出されたら以下のコードのことだよってこと！
+        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in//{ authResult, error inはクロージャ関数ってやつで簡単に作りたい時作る
             if let error = error {
-                DispatchQueue.main.async {
-                    self.errorMessage = "ログインに失敗しました: \(error.localizedDescription)"
+                DispatchQueue.main.async {//エラーを人間が読める様にするプロパティ
+                    self.errorMessage = "ログインに失敗しました"
                 }
             } else if let user = authResult?.user {
                 DispatchQueue.main.async {
