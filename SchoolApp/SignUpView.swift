@@ -4,6 +4,7 @@ struct SignUpView: View {
     @State private var Accountname: String = ""
     @State private var Mailname: String = ""
     @State private var Password: String = ""
+    @StateObject private var viewModel = LoginViewModel()
 
     var body: some View {
         ZStack {
@@ -53,11 +54,19 @@ struct SignUpView: View {
                     .padding(.bottom, 20)
 
                 
-                NavigationLink(destination:MakeRoomNameView()) {
+//                NavigationLink(destination:LogInAccountView()) {
+//                    Text("アカウントを作成")
+//                        .modifier(MyTitle(color: Color(red: 0, green: 0.4, blue: 0.7), width: 200, height: 50))
+//                                    }
+
+                Button(action: {
+                    print("アカウントを作成ボタンが押されました")
+                    viewModel.maccount()
+                }) {
                     Text("アカウントを作成")
                         .modifier(MyTitle(color: Color(red: 0, green: 0.4, blue: 0.7), width: 200, height: 50))
-                                    }
 
+                }
                 Spacer()
             }
             
