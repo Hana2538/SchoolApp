@@ -78,7 +78,7 @@ struct LogInAccountView: View {
                                         .foregroundColor(.red)
                                 }
 
-                    NavigationLink(destination: SignUpView()) {
+                    NavigationLink(destination: MakeAccountView()) {
                         Text("アカウントをお持ちでない方はこちら")
                             .fontWeight(.bold)
                             .font(.system(size: 18))

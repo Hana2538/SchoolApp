@@ -8,3 +8,4 @@ class User{
     @Published var mail: String = ""
 }
 
+

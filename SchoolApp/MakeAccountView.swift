@@ -1,10 +1,10 @@
 import SwiftUI
 
-struct SignUpView: View {
+struct MakeAccountView: View {
     @State private var Accountname: String = ""
     @State private var Mailname: String = ""
     @State private var Password: String = ""
-    @StateObject private var viewModel = LogInViewModel()
+    @StateObject private var viewModel = MakeAccountViewModel()
 
     var body: some View {
         ZStack {

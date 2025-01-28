@@ -32,7 +32,7 @@ struct SchoolApp: App {
                                 .font(.system(size: 100, weight: .bold))
                         }
                     
-                    AccountView()
+                    EditAccountView()
                         .tabItem {
                             Text("Account")
                             Image(systemName: "person.circle")
