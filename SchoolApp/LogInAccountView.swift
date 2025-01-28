@@ -18,7 +18,8 @@ struct MyTitle: ViewModifier {
 
 
 struct LogInAccountView: View {
-    @StateObject private var viewModel = LoginViewModel()
+    @StateObject private var viewModel = LogInViewModel()
+//    @ObservedObject var viewModel = LogInViewModel
     @State private var username: String = ""
     @State private var password: String = ""
 

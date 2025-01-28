@@ -4,7 +4,7 @@ struct SignUpView: View {
     @State private var Accountname: String = ""
     @State private var Mailname: String = ""
     @State private var Password: String = ""
-    @StateObject private var viewModel = LoginViewModel()
+    @StateObject private var viewModel = LogInViewModel()
 
     var body: some View {
         ZStack {
