@@ -2,7 +2,7 @@ import FirebaseAuth
 import Combine
 
 class LogInViewModel: ObservableObject {
-    @Published var user = User()
+   var user = User()
     @Published var errorMessage: String? = nil
     func login() {//この関数が呼び出されたら以下のコードのことだよってこと！
         let email = user.mail
