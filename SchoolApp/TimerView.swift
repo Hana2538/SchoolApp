@@ -7,7 +7,10 @@ struct TimerView: View {
     @State private var HourScreen: String = "00"
     @State private var MinuteScreen: String = "00"
     @State private var SecondScreen: String = "00"
-
+    
+    @State private var timerActive = false
+    @State private var timer: Timer?
+    
     var body: some View {
         ZStack {
             Image("kabegamiNone")
@@ -44,14 +47,14 @@ struct TimerView: View {
                         .frame(width: 280, height: 280)
                     
                     Text("\(HourScreen):\(MinuteScreen):\(SecondScreen)")
-                            .font(.system(size: 40))
-                            .fontWeight(.bold)
-                            .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
+                        .font(.system(size: 40))
+                        .fontWeight(.bold)
+                        .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
                     
                 }
-
+                
                 Spacer()
-
+                
                 HStack {
                     Picker(selection: $Hour, label: Text("時間選択")) {
                         ForEach(0..<24) { num in
@@ -98,6 +101,7 @@ struct TimerView: View {
                     Spacer()
                     
                     Button(action: {
+                        startTimer()
                         print("STARTボタンが押されました")
                     }) {
                         Text("START")
@@ -107,17 +111,67 @@ struct TimerView: View {
                     Spacer()
                     
                     Button(action: {
+                        stopTimer()
                         print("STOPボタンが押されました")
                     }) {
                         Text("STOP")
                             .modifier(MyTitle(color: Color(red: 0, green: 0.4, blue: 0.7), width: 100, height: 50))
                     }
-
+                    
                     Spacer()
                 }
                 .padding(.bottom, 50)
-
+                
             }
         }
+    }
+    
+    func startTimer(){
+        
+        HourScreen = String(format: "%02d", Hour)
+        MinuteScreen = String(format: "%02d", Minutes)
+        SecondScreen = String(format: "%02d", Second)
+        
+        timerActive = true
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+            if timerActive {
+                countDown()
+            }
+        }
+        
+    }
+    
+    func stopTimer() {
+        timerActive = false
+        timer?.invalidate()
+    }
+    
+    func countDown() {
+        var h = Int(HourScreen) ?? 0
+        var m = Int(MinuteScreen) ?? 0
+        var s = Int(SecondScreen) ?? 0
+        
+        if h == 0 && m == 0 && s == 0 {
+            timer?.invalidate()
+            timerActive = false
+            return
+        }
+        
+        if s > 0 {
+            s -= 1
+        } else {
+            if m > 0 {
+                m -= 1
+                s = 59
+            } else if h > 0 {
+                h -= 1
+                m = 59
+                s = 59
+            }
+        }
+        HourScreen = String(format: "%02d", h)
+        MinuteScreen = String(format: "%02d", m)
+        SecondScreen = String(format: "%02d", s)
     }
 }
