@@ -101,7 +101,6 @@ struct TimerView: View {
                     Spacer()
                     
                     Button(action: {
-                        startTimer()
                         print("STARTボタンが押されました")
                     }) {
                         Text("START")
