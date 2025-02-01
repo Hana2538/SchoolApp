@@ -25,7 +25,7 @@ struct SchoolApp: App {
         WindowGroup {
             NavigationView {
                 TabView {
-                    LogInAccountView()
+                    LogInView()
                         .tabItem {
                             Text("Login")
                             Image(systemName: "house.fill")

@@ -1,11 +1,16 @@
 import Foundation
 import SwiftUI
-import FirebaseAuth
 
 class User{
-    var name:String = ""
-    var password: String = ""
-    var mail: String = ""
+    var name:String
+    var password: String
+    var email: String
+
+    init(name: String, password: String, email: String) {
+        self.name = name
+        self.password = password
+        self.email = email
+    }
 }
 
 

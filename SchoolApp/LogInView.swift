@@ -17,8 +17,8 @@ struct MyTitle: ViewModifier {
 }
 
 
-struct LogInAccountView: View {
-    @StateObject private var viewModel = LogInViewModel()
+struct LogInView: View {
+    @StateObject private var viewModel = LogInViewModel(user: User(name: "test", password: "test", email: "example@emailcom"), errorMessage: "")
     @State private var username: String = ""
     @State private var password: String = ""
 
