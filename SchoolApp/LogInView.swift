@@ -18,8 +18,7 @@ struct MyTitle: ViewModifier {
 
 
 struct LogInView: View {
-    @State private var username: String = ""
-    @State private var password: String = ""
+    @StateObject private var viewModel = LogInViewModel()
 
     var body: some View {
         NavigationView {
@@ -41,7 +40,7 @@ struct LogInView: View {
                         .fontWeight(.bold)
                         .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
 
-                    TextField("ユーザー名", text: $username)
+                    TextField("メールアドレス", text: $viewModel.email)
                         .padding()
                         .background(Color(.white))
                         .cornerRadius(8)
@@ -51,7 +50,7 @@ struct LogInView: View {
                         )
                         .frame(width: 350, height: 50)
 
-                    SecureField("パスワード", text: $password)
+                    SecureField("パスワード", text: $viewModel.password)
                         .padding()
                         .background(Color(.white))
                         .cornerRadius(8)
@@ -60,13 +59,24 @@ struct LogInView: View {
                                 .stroke(Color.black, lineWidth: 2)
                         )
                         .frame(width: 350, height: 50)
+
+                    if let errorMessage = viewModel.errorMessage {
+                        Text(errorMessage)
+                            .foregroundColor(.red)
+                            .font(.system(size: 14))
+                    }
 
                     Button(action: {
-                        print("ログインボタンが押されました")
+                        viewModel.logIn()
                     }) {
                         Text("ログイン")
                             .modifier(MyTitle(color: Color(red: 0, green: 0.4, blue: 0.7), width: 200, height: 50))
+                    }
+                    .disabled(viewModel.isLoading || viewModel.email.isEmpty || viewModel.password.isEmpty)
 
+                    if viewModel.isLoading {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
                     }
 
                     NavigationLink(destination: MakeAccountView()) {
@@ -74,6 +84,12 @@ struct LogInView: View {
                             .fontWeight(.bold)
                             .font(.system(size: 18))
                             .foregroundColor(Color.blue)
+                    }
+                    .padding(.top, 20)
+
+                    // ログイン成功したらHomeViewに遷移
+                    NavigationLink(destination: HomeView(), isActive: $viewModel.isLoggedIn) {
+                        EmptyView()
                     }
                 }
                 .padding(.horizontal, 20)
