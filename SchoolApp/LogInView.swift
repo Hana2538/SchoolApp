@@ -18,7 +18,6 @@ struct MyTitle: ViewModifier {
 
 
 struct LogInView: View {
-    @StateObject private var viewModel = LogInViewModel(user: User(name: "test", password: "test", email: "example@emailcom"), errorMessage: "")
     @State private var username: String = ""
     @State private var password: String = ""
 
@@ -64,18 +63,11 @@ struct LogInView: View {
 
                     Button(action: {
                         print("ログインボタンが押されました")
-                        viewModel.login()
                     }) {
                         Text("ログイン")
                             .modifier(MyTitle(color: Color(red: 0, green: 0.4, blue: 0.7), width: 200, height: 50))
 
                     }
-                    if let errorMessage = viewModel.errorMessage {
-                                    Text(errorMessage)
-                                        .font(.system(size:15))
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.red)
-                                }
 
                     NavigationLink(destination: MakeAccountView()) {
                         Text("アカウントをお持ちでない方はこちら")
