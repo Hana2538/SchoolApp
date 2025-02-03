@@ -102,6 +102,7 @@ struct TimerView: View {
                     
                     Button(action: {
                         print("STARTボタンが押されました")
+                        startTimer()
                     }) {
                         Text("START")
                             .modifier(MyTitle(color: .orange, width: 100, height: 50))
@@ -125,25 +126,28 @@ struct TimerView: View {
         }
     }
     
-    func startTimer(){
-        
-        HourScreen = String(format: "%02d", Hour)
-        MinuteScreen = String(format: "%02d", Minutes)
-        SecondScreen = String(format: "%02d", Second)
-        
-        timerActive = true
-        
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-            if timerActive {
-                countDown()
-            }
+    func startTimer() {
+        if !timerActive && timer == nil { // 初回のみセット
+            HourScreen = String(format: "%02d", Hour)
+            MinuteScreen = String(format: "%02d", Minutes)
+            SecondScreen = String(format: "%02d", Second)
         }
         
+        timerActive = true
+
+        if timer == nil { 
+            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+                if timerActive {
+                    countDown()
+                }
+            }
+        }
     }
+
+
     
     func stopTimer() {
         timerActive = false
-        timer?.invalidate()
     }
     
     func countDown() {
