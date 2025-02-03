@@ -14,6 +14,8 @@ struct TimerView: View {
     @State private var totalSeconds: Int = 1 // 初期総時間（秒）
     @State private var remainingSeconds: Int = 1 // 残り時間（秒）
     
+    @State private var currentProgress: CGFloat = 1.0 // 現在のプログレス（初期は100%）
+    
     var progress: CGFloat {
         return CGFloat(remainingSeconds) / CGFloat(totalSeconds)
     }
@@ -42,7 +44,7 @@ struct TimerView: View {
                     
                     // 青い円（プログレスバー）
                     Circle()
-                        .trim(from: 0.0, to: progress)
+                        .trim(from: 0.0, to: currentProgress)
                         .stroke(
                             Color(red: 0, green: 0.4, blue: 0.7),
                             style: StrokeStyle(lineWidth: 30, lineCap: .round)
@@ -163,6 +165,11 @@ struct TimerView: View {
             timer = nil
             timerActive = false
             return
+        }
+        
+        // プログレスバーの値をアニメーションで更新
+        withAnimation(.linear(duration: 1.0)) {
+            currentProgress = CGFloat(remainingSeconds) / CGFloat(totalSeconds)
         }
         
         let h = remainingSeconds / 3600
