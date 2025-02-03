@@ -11,6 +11,13 @@ struct TimerView: View {
     @State private var timerActive = false
     @State private var timer: Timer?
     
+    @State private var totalSeconds: Int = 1 // 初期総時間（秒）
+    @State private var remainingSeconds: Int = 1 // 残り時間（秒）
+    
+    var progress: CGFloat {
+        return CGFloat(remainingSeconds) / CGFloat(totalSeconds)
+    }
+    
     var body: some View {
         ZStack {
             Image("kabegamiNone")
@@ -25,32 +32,29 @@ struct TimerView: View {
                     .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
                 
                 ZStack {
+                    // オレンジの円（枠）
                     Circle()
                         .stroke(
                             Color.orange,
-                            style: StrokeStyle(
-                                lineWidth: 30,
-                                lineCap: .round
-                            )
+                            style: StrokeStyle(lineWidth: 30, lineCap: .round)
                         )
                         .frame(width: 280, height: 280)
                     
+                    // 青い円（プログレスバー）
                     Circle()
-                        .trim(from: 0.0, to: 0.5)
+                        .trim(from: 0.0, to: progress)
                         .stroke(
                             Color(red: 0, green: 0.4, blue: 0.7),
-                            style: StrokeStyle(
-                                lineWidth: 30,
-                                lineCap: .round//線の端の形
-                            )
+                            style: StrokeStyle(lineWidth: 30, lineCap: .round)
                         )
                         .frame(width: 280, height: 280)
+                        .rotationEffect(.degrees(-90)) // 上から開始
                     
+                    // 時間表示
                     Text("\(HourScreen):\(MinuteScreen):\(SecondScreen)")
                         .font(.system(size: 40))
                         .fontWeight(.bold)
                         .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
-                    
                 }
                 
                 Spacer()
@@ -127,15 +131,18 @@ struct TimerView: View {
     }
     
     func startTimer() {
-        if !timerActive && timer == nil { // 初回のみセット
+        if !timerActive && timer == nil {
             HourScreen = String(format: "%02d", Hour)
             MinuteScreen = String(format: "%02d", Minutes)
             SecondScreen = String(format: "%02d", Second)
+            
+            totalSeconds = (Hour * 3600) + (Minutes * 60) + Second
+            remainingSeconds = totalSeconds
         }
         
         timerActive = true
 
-        if timer == nil { 
+        if timer == nil {
             timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
                 if timerActive {
                     countDown()
@@ -144,35 +151,24 @@ struct TimerView: View {
         }
     }
 
-
-    
     func stopTimer() {
         timerActive = false
     }
     
     func countDown() {
-        var h = Int(HourScreen) ?? 0
-        var m = Int(MinuteScreen) ?? 0
-        var s = Int(SecondScreen) ?? 0
-        
-        if h == 0 && m == 0 && s == 0 {
+        if remainingSeconds > 0 {
+            remainingSeconds -= 1
+        } else {
             timer?.invalidate()
+            timer = nil
             timerActive = false
             return
         }
         
-        if s > 0 {
-            s -= 1
-        } else {
-            if m > 0 {
-                m -= 1
-                s = 59
-            } else if h > 0 {
-                h -= 1
-                m = 59
-                s = 59
-            }
-        }
+        let h = remainingSeconds / 3600
+        let m = (remainingSeconds % 3600) / 60
+        let s = remainingSeconds % 60
+        
         HourScreen = String(format: "%02d", h)
         MinuteScreen = String(format: "%02d", m)
         SecondScreen = String(format: "%02d", s)
