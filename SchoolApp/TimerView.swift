@@ -11,10 +11,10 @@ struct TimerView: View {
     @State private var timerActive = false
     @State private var timer: Timer?
     
-    @State private var totalSeconds: Int = 1 // 初期総時間（秒）
-    @State private var remainingSeconds: Int = 1 // 残り時間（秒）
+    @State private var totalSeconds: Int = 1 
+    @State private var remainingSeconds: Int = 1
     
-    @State private var currentProgress: CGFloat = 1.0 // 現在のプログレス（初期は100%）
+    @State private var currentProgress: CGFloat = 1.0
     
     var progress: CGFloat {
         return CGFloat(remainingSeconds) / CGFloat(totalSeconds)
@@ -167,7 +167,7 @@ struct TimerView: View {
             return
         }
         
-        // プログレスバーの値をアニメーションで更新
+        
         withAnimation(.linear(duration: 1.0)) {
             currentProgress = CGFloat(remainingSeconds) / CGFloat(totalSeconds)
         }

@@ -19,6 +19,7 @@ struct MyTitle: ViewModifier {
 
 struct LogInView: View {
     @StateObject private var viewModel = LogInViewModel()
+    @State private var accountName: String = "アカウント名"
 
     var body: some View {
         NavigationView {
