@@ -24,6 +24,7 @@ class LogInViewModel: ObservableObject {
                 if let error = error {
                     self.errorMessage = "ログインに失敗しました: \(error.localizedDescription)"
                 } else {
+                    
                     self.isLoggedIn = true
                 }
             }

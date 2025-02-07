@@ -7,22 +7,18 @@ struct HomeView: View {
     var body: some View {
         NavigationView{
             ZStack {
-                
                 Image("kabegamiNone")
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
-                
                 VStack {
                     Spacer()
-                    
                     Image(imageName)
                         .resizable()
                         .clipShape(Circle())
                         .frame(width: 80, height: 80)
                         .padding(.bottom, 10)
                         .padding(.leading,200)
-                    
                     Text("\(YourName)")
                         .font(.system(size:20))
                         .fontWeight(.bold)
@@ -65,6 +61,17 @@ struct HomeView: View {
                                 .modifier(MyTitle(color: .orange, width: 200, height: 50))
                         }
                         Spacer()
+                        
+                        Button(action: {
+                            
+                        }) {
+                            Text("ログアウト")
+                                .font(.system(size:20))
+                                .fontWeight(.bold)
+                                .foregroundColor(Color.red)
+                                .padding(.leading,200)
+                        }
+                        
                         
                     }
                     
