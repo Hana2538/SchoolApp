@@ -50,7 +50,7 @@ struct HomeView: View {
                         
                         .padding(.bottom, 50)
                         
-                        NavigationLink(destination:MakeRoomNameView()) { 
+                        NavigationLink(destination:MakeRoomNameView()) {
                             Text("問題を新規作成")
                                 .modifier(MyTitle(color: .orange, width: 200, height: 50))
                         }
@@ -62,18 +62,29 @@ struct HomeView: View {
                         }
                         Spacer()
                         
-                        Button(action: {
+                        VStack(spacing: 8) {
+                            Button(action: {
+                                
+                            }) {
+                                Image(systemName: "door.right.hand.open")
+                                    .font(.system(size: 30))
+                                    .foregroundColor(.red)
+                                    .padding(.leading,200)
+                            }
                             
-                        }) {
-                            Text("ログアウト")
-                                .font(.system(size:20))
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.red)
-                                .padding(.leading,200)
+                            Button(action: {
+                                
+                            }) {
+                                Text("ログアウト")
+                                    .font(.system(size:20))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.red)
+                                    .padding(.leading,200)
+                            }
                         }
-                        
-                        
+                        Spacer()
                     }
+
                     
                 }
                 

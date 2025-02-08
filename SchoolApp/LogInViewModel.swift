@@ -24,11 +24,10 @@ class LogInViewModel: ObservableObject {
                 if let error = error {
                     self.errorMessage = "ログインに失敗しました: \(error.localizedDescription)"
                 } else {
-                    
+                    UserDefaults.standard.set(self.email, forKey: "userEmail")
                     self.isLoggedIn = true
                 }
             }
         }
     }
 }
-
