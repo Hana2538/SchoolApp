@@ -25,11 +25,17 @@ struct SchoolApp: App {
         WindowGroup {
             NavigationView {
                 TabView {
-                    LogInView()
+//                    LogInView()
+//                        .tabItem {
+//                            Text("Login")
+//                            Image(systemName: "house.fill")
+//                                .font(.system(size: 100, weight: .bold))
+//                        }
+                    
+                    HomeView()
                         .tabItem {
-                            Text("Login")
+                            Text("Home")
                             Image(systemName: "house.fill")
-                                .font(.system(size: 100, weight: .bold))
                         }
                     
                     EditAccountView()
@@ -38,11 +44,9 @@ struct SchoolApp: App {
                             Image(systemName: "person.circle")
                         }
                     
-                    HomeView()
-                        .tabItem {
-                            Text("Home")
-                        }
                 }.accentColor(.orange)
+                
+                
             }
         }
     }

@@ -33,8 +33,11 @@ struct RankingView: View {
                                 Text("1")
                                     .font(.system(size: 35))
                                     .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
-                                
                             }
+                            Text("")
+                                .font(.system(size: 40))
+                                .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
+                            
                             Spacer()
                         }
                         
@@ -53,8 +56,13 @@ struct RankingView: View {
                                 Text("2")
                                     .font(.system(size: 35))
                                     .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
+                                    .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
                                 
                             }
+                            Text("")
+                                .font(.system(size: 40))
+                                .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
+                            
                             Spacer()
                         }
                         
@@ -75,6 +83,10 @@ struct RankingView: View {
                                     .foregroundColor(Color.white)
                                 
                             }
+                            Text("")
+                                .font(.system(size: 40))
+                                .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
+                            
                             Spacer()
                         }
                     }

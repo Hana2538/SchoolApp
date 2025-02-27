@@ -11,7 +11,7 @@ struct QuestionView: View {
     var body: some View {
         VStack {
             Spacer()
-            Text("仮ルーム")
+            Text("英語ルーム")
                 .font(.system(size:40))
                 .fontWeight(.bold)
                 .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
@@ -82,3 +82,18 @@ struct QuestionView: View {
         }
     }
 
+//Button(action: {
+//            print("ボタンが押された！") // アクションの例
+//        }) {
+//            RoundedRectangle(cornerRadius: 10)
+//                .fill(Color.yellow)
+//                .frame(width: 350, height: 60)
+//                .opacity(0.8)
+//                .overlay(
+//                    Text("重要な")
+//                        .font(.system(size: 20))
+//                        .fontWeight(.bold)
+//                        .foregroundColor(.black) // テキストの色
+//                )
+//        }
+//

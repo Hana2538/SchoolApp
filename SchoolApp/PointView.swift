@@ -3,6 +3,7 @@ import SwiftUI
 //ピッカーっていうのがあるよ！ホイールピッカーとかね！
 
 struct PointView: View {
+    @StateObject private var viewModel = MakeQuestionViewModel()
     @State private var Point: String = ""
     @Binding var isPresented: Bool
     var body: some View {
@@ -48,6 +49,7 @@ struct PointView: View {
                 Button(action: {
                     print("問題を作成ボタンが押されました")
                     isPresented = false
+                    viewModel.saveQuestion()
                 }) {
                     Text("問題を作成")
                         .modifier(MyTitle(color: .orange, width: 200, height: 50))
