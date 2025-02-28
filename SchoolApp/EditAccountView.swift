@@ -1,9 +1,36 @@
 import SwiftUI
+import FirebaseStorage
+import UIKit
 
 struct EditAccountView: View {
     @State var imageName: String = "SubIcon"
     @State private var accountname: String = ""
+    @State private var selectedImage: UIImage? = nil
+    @State private var isImagePickerPresented: Bool = false
     
+    func uploadImageToFirebase(image: UIImage) {
+        let storageRef = Storage.storage().reference()
+        let imageRef = storageRef.child("profile_images/\(UUID().uuidString).jpg")
+        
+        if let imageData = image.jpegData(compressionQuality: 0.75) {
+            imageRef.putData(imageData, metadata: nil) { metadata, error in
+                if let error = error {
+                    print("画像のアップロードに失敗しました: \(error.localizedDescription)")
+                    return
+                }
+                imageRef.downloadURL { (url, error) in
+                    if let error = error {
+                        print("URL取得に失敗しました: \(error.localizedDescription)")
+                        return
+                    }
+                    guard let downloadURL = url else { return }
+                    print("アップロード成功！URL: \(downloadURL)")
+                    // URLを保存したり、UIに表示するなどの処理を追加
+                }
+            }
+        }
+    }
+
     var body: some View {
         ZStack {
             Image("kabegamiNone")
@@ -18,11 +45,22 @@ struct EditAccountView: View {
                     .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
                     .padding(.bottom, 80)
                 
-                Image(imageName)
-                    .resizable()
-                    .clipShape(Circle())
-                    .frame(width: 200, height: 200)
-                    .padding(.bottom, 50)
+                Button(action: {
+                    isImagePickerPresented.toggle()
+                }) {
+                    if let selectedImage = selectedImage {
+                        Image(uiImage: selectedImage)
+                            .resizable()
+                            .clipShape(Circle())
+                            .frame(width: 200, height: 200)
+                    } else {
+                        Image(imageName)
+                            .resizable()
+                            .clipShape(Circle())
+                            .frame(width: 200, height: 200)
+                    }
+                }
+                .padding(.bottom, 50)
                 
                 TextField("アカウント名を編集", text: $accountname)
                     .padding()
@@ -47,6 +85,49 @@ struct EditAccountView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             .padding()
+        }
+        .sheet(isPresented: $isImagePickerPresented) {
+            ImagePicker(selectedImage: $selectedImage, onImagePicked: { image in
+                // 画像が選ばれたらアップロードする
+                uploadImageToFirebase(image: image)
+            })
+        }
+    }
+}
+
+struct ImagePicker: UIViewControllerRepresentable {
+    @Binding var selectedImage: UIImage?
+    var onImagePicked: (UIImage) -> Void
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(parent: self)
+    }
+    
+    func makeUIViewController(context: Context) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.delegate = context.coordinator
+        return picker
+    }
+    
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
+    
+    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+        var parent: ImagePicker
+        
+        init(parent: ImagePicker) {
+            self.parent = parent
+        }
+        
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let image = info[.originalImage] as? UIImage {
+                parent.selectedImage = image
+                parent.onImagePicked(image)
+            }
+            picker.dismiss(animated: true, completion: nil)
+        }
+        
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            picker.dismiss(animated: true, completion: nil)
         }
     }
 }

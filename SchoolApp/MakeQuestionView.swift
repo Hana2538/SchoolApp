@@ -24,13 +24,16 @@ extension View {
 }
 
 
-
 struct MakeQuestionView: View {
-    @StateObject private var viewModel = MakeQuestionViewModel() // ViewModelをインスタンス化
     @Binding var isPresented: Bool
+    @State private var inputText: String = "問題文"
+    @State private var choice1: String = ""
+    @State private var choice2: String = ""
+    @State private var choice3: String = ""
+    @State private var choice4: String = ""
     
     var body: some View {
-        NavigationView {
+        NavigationView{
             ZStack {
                 VStack {
                     Text("問題を作成")
@@ -47,7 +50,7 @@ struct MakeQuestionView: View {
                         .padding(.top, 5)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    TextEditor(text: $viewModel.questionText)
+                    TextEditor(text: $inputText)
                         .padding(10)
                         .background(
                             RoundedRectangle(cornerRadius: 10)
@@ -63,26 +66,19 @@ struct MakeQuestionView: View {
                         .padding(.top, 5)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    TextField("選択肢1", text: $viewModel.choice1)
+                    TextField("選択肢1", text: $choice1)
                         .customTextFieldStyle(color: .white)
                     
-                    TextField("選択肢2", text: $viewModel.choice2)
+                    TextField("選択肢2", text: $choice2)
                         .customTextFieldStyle(color: .white)
                     
-                    TextField("選択肢3", text: $viewModel.choice3)
+                    TextField("選択肢3", text: $choice3)
                         .customTextFieldStyle(color: .white)
                     
-                    TextField("選択肢4", text: $viewModel.choice4)
+                    TextField("選択肢4", text: $choice4)
                         .customTextFieldStyle(color: .white)
                     
-                    // 「次へ」ボタンでAnswerViewに遷移
-                    NavigationLink(destination: AnswerView(
-                        choice1: $viewModel.choice1,
-                        choice2: $viewModel.choice2,
-                        choice3: $viewModel.choice3,
-                        choice4: $viewModel.choice4,
-                        isPresented: $isPresented,
-                        viewModel: viewModel)) {
+                    NavigationLink(destination:AnswerView(choice1: $choice1, choice2: $choice2, choice3: $choice3, choice4: $choice4, isPresented: $isPresented)){
                         Text("次へ")
                             .modifier(MyTitle(color: .orange, width: 200, height: 50))
                     }
@@ -97,7 +93,3 @@ struct MakeQuestionView: View {
         }
     }
 }
-
-
-
-
