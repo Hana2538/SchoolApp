@@ -3,7 +3,11 @@ import SwiftUI
 @main
 struct SchoolApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject private var authViewModel = LogInViewModel()
+    
     init() {
+        
+        FirebaseApp.configure()
         
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -23,6 +27,7 @@ struct SchoolApp: App {
     
     var body: some Scene {
         WindowGroup {
+            
             NavigationView {
                 TabView {
 //                    LogInView()
