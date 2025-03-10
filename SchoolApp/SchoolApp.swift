@@ -1,9 +1,9 @@
 import SwiftUI
+import Firebase
 
 @main
 struct SchoolApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject private var authViewModel = LogInViewModel()
+    @StateObject private var authViewModel = AuthViewModel()
     
     init() {
         
@@ -30,12 +30,12 @@ struct SchoolApp: App {
             
             NavigationView {
                 TabView {
-//                    LogInView()
-//                        .tabItem {
-//                            Text("Login")
-//                            Image(systemName: "house.fill")
-//                                .font(.system(size: 100, weight: .bold))
-//                        }
+                    //                    LogInView()
+                    //                        .tabItem {
+                    //                            Text("Login")
+                    //                            Image(systemName: "house.fill")
+                    //                                .font(.system(size: 100, weight: .bold))
+                    //                        }
                     
                     HomeView()
                         .tabItem {
@@ -53,20 +53,7 @@ struct SchoolApp: App {
                 
                 
             }
+            .environmentObject(authViewModel)
         }
     }
 }
-
-import SwiftUI
-import FirebaseCore
-
-
-class AppDelegate: NSObject, UIApplicationDelegate {
-  func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-    FirebaseApp.configure()
-
-    return true
-  }
-}
-

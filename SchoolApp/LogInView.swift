@@ -18,9 +18,15 @@ struct MyTitle: ViewModifier {
 
 
 struct LogInView: View {
-    @StateObject private var viewModel = LogInViewModel()
+    @EnvironmentObject var authVM: AuthViewModel
     @State private var accountName: String = "アカウント名"
-
+    
+    @State private var email: String = ""
+    @State private var password: String = ""
+    
+    @State private var errorMessage: String = ""
+    @State private var showingAlert = false
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -28,8 +34,8 @@ struct LogInView: View {
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
-
-                if viewModel.isLoggedIn {
+                
+                if authVM.isLoggedIn {
                     HomeView()
                 } else {
                     VStack(spacing: 20) {
@@ -38,13 +44,13 @@ struct LogInView: View {
                             .fontWeight(.bold)
                             .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
                             .padding(.top, 30)
-
+                        
                         Text("ログイン")
                             .font(.system(size: 30))
                             .fontWeight(.bold)
                             .foregroundColor(Color(red: 0, green: 0.4, blue: 0.7))
-
-                        TextField("メールアドレス", text: $viewModel.email)
+                        
+                        TextField("メールアドレス", text: $email)
                             .padding()
                             .background(Color(.white))
                             .cornerRadius(8)
@@ -53,8 +59,8 @@ struct LogInView: View {
                                     .stroke(Color.black, lineWidth: 2)
                             )
                             .frame(width: 350, height: 50)
-
-                        SecureField("パスワード", text: $viewModel.password)
+                        
+                        SecureField("パスワード", text: $password)
                             .padding()
                             .background(Color(.white))
                             .cornerRadius(8)
@@ -63,26 +69,32 @@ struct LogInView: View {
                                     .stroke(Color.black, lineWidth: 2)
                             )
                             .frame(width: 350, height: 50)
-
-                        if let errorMessage = viewModel.errorMessage {
-                            Text(errorMessage)
-                                .foregroundColor(.red)
-                                .font(.system(size: 14))
-                        }
-
+                        
+                        //                        if let errorMessage = viewModel.errorMessage {
+                        //                            Text(errorMessage)
+                        //                                .foregroundColor(.red)
+                        //                                .font(.system(size: 14))
+                        //                        }
+                        //
                         Button(action: {
-                            viewModel.logIn()
+                            Task {
+                                do {
+                                    try await authVM.signIn(email: email, password: password)
+                                } catch {
+                                    showError(error.localizedDescription)
+                                }
+                            }
                         }) {
                             Text("ログイン")
                                 .modifier(MyTitle(color: Color(red: 0, green: 0.4, blue: 0.7), width: 200, height: 50))
                         }
-                        .disabled(viewModel.isLoading || viewModel.email.isEmpty || viewModel.password.isEmpty)
-
-                        if viewModel.isLoading {
-                            ProgressView()
-                                .progressViewStyle(CircularProgressViewStyle())
-                        }
-
+                        //                        .disabled(viewModel.isLoading || viewModel.email.isEmpty || viewModel.password.isEmpty)
+                        //
+                        //                        if viewModel.isLoading {
+                        //                            ProgressView()
+                        //                                .progressViewStyle(CircularProgressViewStyle())
+                        //                        }
+                        
                         NavigationLink(destination: MakeAccountView()) {
                             Text("アカウントをお持ちでない方はこちら")
                                 .fontWeight(.bold)
@@ -96,6 +108,10 @@ struct LogInView: View {
                 }
             }
         }
+    }
+    private func showError(_ msg: String) {
+        errorMessage = msg
+        showingAlert = true
     }
 }
 
