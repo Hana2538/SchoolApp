@@ -68,7 +68,7 @@ struct EditAccountView: View {
         .sheet(isPresented: $isImagePickerPresented) {
             ImagePicker(selectedImage: $selectedImage, onImagePicked: { image in
                 // 画像が選ばれたらアップロードする
-                uploadImageToFirebase(image: image)
+                authVM.uploadImageToFirebase(image: image)
             })
         }
     }
